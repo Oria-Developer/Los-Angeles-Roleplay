@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Los Angeles Roleplay - Official Community</title>
+    <link rel="icon" type="image/png" href="https://ik.imagekit.io/seqcqjmzq/LARP%20-%20made%20by%20star%202.png?updatedAt=1759093844096">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -126,6 +127,15 @@
             cursor: pointer;
         }
         
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            transition: all 0.3s ease;
+            background-color: var(--dark);
+        }
+        
         /* Hero Section */
         .hero {
             height: 100vh;
@@ -155,14 +165,13 @@
             z-index: 2;
             max-width: 800px;
             padding: 0 20px;
-            animation: fadeIn 1.5s ease-out;
         }
         
         .hero h1 {
             font-size: 4.5rem;
             margin-bottom: 20px;
             font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
+            font-weight: 900;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
             animation: slideInDown 1s ease-out 0.5s both;
         }
@@ -221,10 +230,69 @@
             border: 2px solid var(--white);
         }
         
+        /* Animated Background Elements */
+        .floating-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 20s infinite linear;
+        }
+        
+        .shape-1 {
+            width: 100px;
+            height: 100px;
+            background: var(--accent);
+            border-radius: 50%;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .shape-2 {
+            width: 150px;
+            height: 150px;
+            background: var(--secondary);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            top: 60%;
+            left: 80%;
+            animation-delay: -5s;
+        }
+        
+        .shape-3 {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            border-radius: 50%;
+            top: 80%;
+            left: 20%;
+            animation-delay: -10s;
+        }
+        
+        .shape-4 {
+            width: 120px;
+            height: 120px;
+            background: var(--accent);
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            top: 20%;
+            left: 80%;
+            animation-delay: -15s;
+        }
+        
         /* Sections */
         .section {
             padding: 100px 0;
             background: rgba(255, 255, 255, 0.95);
+            position: relative;
+            overflow: hidden;
         }
         
         .section-alt {
@@ -235,6 +303,8 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            position: relative;
+            z-index: 2;
         }
         
         .section-header {
@@ -246,7 +316,7 @@
             font-size: 3rem;
             color: var(--primary);
             font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
+            font-weight: 800;
             margin-bottom: 20px;
         }
         
@@ -274,6 +344,13 @@
             transition: all 0.5s ease;
             position: relative;
             overflow: hidden;
+            transform: translateY(50px);
+            opacity: 0;
+        }
+        
+        .feature-card.visible {
+            transform: translateY(0);
+            opacity: 1;
         }
         
         .feature-card::before {
@@ -331,6 +408,13 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
             transition: all 0.5s ease;
             position: relative;
+            transform: translateY(50px);
+            opacity: 0;
+        }
+        
+        .department-card.visible {
+            transform: translateY(0);
+            opacity: 1;
         }
         
         .department-card:hover {
@@ -346,6 +430,23 @@
             justify-content: center;
             color: var(--white);
             font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .department-img::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .department-card:hover .department-img::before {
+            left: 100%;
         }
         
         .department-content {
@@ -376,6 +477,13 @@
             border-radius: 15px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
             transition: all 0.5s ease;
+            transform: scale(0);
+            opacity: 0;
+        }
+        
+        .stat-item.visible {
+            transform: scale(1);
+            opacity: 1;
         }
         
         .stat-item:hover {
@@ -573,16 +681,45 @@
             100% { transform: translateX(200%) rotate(45deg); }
         }
         
-        /* Scroll Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.1;
+            }
+            90% {
+                opacity: 0.1;
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+            }
         }
         
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Particle Background */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
         }
         
         /* Responsive */
@@ -610,6 +747,18 @@
             
             .hamburger {
                 display: block;
+            }
+            
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
             }
             
             .hero h1 {
@@ -681,6 +830,13 @@
 
     <!-- Hero Section -->
     <section class="hero">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+        <div class="particles" id="particles"></div>
         <div class="hero-content">
             <h1>Los Angeles Roleplay</h1>
             <p>Experience the most immersive Los Angeles-based roleplay on Roblox</p>
@@ -693,27 +849,28 @@
 
     <!-- Features Section -->
     <section class="section">
+        <div class="particles" id="particles2"></div>
         <div class="container">
-            <div class="section-header fade-in">
+            <div class="section-header">
                 <h2>Why Choose Los Angeles Roleplay?</h2>
                 <p>Our community offers an unparalleled roleplay experience with realistic departments, custom content, and an active community.</p>
             </div>
             <div class="features">
-                <div class="feature-card fade-in">
+                <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
                     <h3>Realistic Departments</h3>
                     <p>Join authentic police, fire, medical, and federal agencies with detailed uniforms and vehicles.</p>
                 </div>
-                <div class="feature-card fade-in">
+                <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-users"></i>
                     </div>
                     <h3>Active Community</h3>
                     <p>Connect with hundreds of dedicated roleplayers in our Discord community and in-game.</p>
                 </div>
-                <div class="feature-card fade-in">
+                <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-palette"></i>
                     </div>
@@ -727,12 +884,12 @@
     <!-- Departments Section -->
     <section class="section section-alt">
         <div class="container">
-            <div class="section-header fade-in">
+            <div class="section-header">
                 <h2>Our Departments</h2>
                 <p>Join one of our specialized departments and experience roleplay like never before.</p>
             </div>
             <div class="departments">
-                <div class="department-card fade-in">
+                <div class="department-card">
                     <div class="department-img" style="background: #1a5fb4;">
                         <i class="fas fa-police-car"></i>
                     </div>
@@ -741,7 +898,7 @@
                         <p>Enforce the law, respond to emergencies, and protect the citizens of Los Angeles.</p>
                     </div>
                 </div>
-                <div class="department-card fade-in">
+                <div class="department-card">
                     <div class="department-img" style="background: #b21f1f;">
                         <i class="fas fa-fire"></i>
                     </div>
@@ -750,7 +907,7 @@
                         <p>Respond to fires, medical emergencies, and rescue operations across the city.</p>
                     </div>
                 </div>
-                <div class="department-card fade-in">
+                <div class="department-card">
                     <div class="department-img" style="background: #2ecc71;">
                         <i class="fas fa-ambulance"></i>
                     </div>
@@ -759,7 +916,7 @@
                         <p>Provide critical medical care and transport patients to hospitals.</p>
                     </div>
                 </div>
-                <div class="department-card fade-in">
+                <div class="department-card">
                     <div class="department-img" style="background: #9b59b6;">
                         <i class="fas fa-gavel"></i>
                     </div>
@@ -775,24 +932,20 @@
     <!-- Stats Section -->
     <section class="section">
         <div class="container">
-            <div class="section-header fade-in">
+            <div class="section-header">
                 <h2>Community Stats</h2>
                 <p>Join our growing community of dedicated roleplayers.</p>
             </div>
             <div class="stats">
-                <div class="stat-item fade-in">
-                    <span class="stat-number">500+</span>
+                <div class="stat-item">
+                    <span class="stat-number">100+</span>
                     <span class="stat-label">Active Members</span>
                 </div>
-                <div class="stat-item fade-in">
-                    <span class="stat-number">6</span>
+                <div class="stat-item">
+                    <span class="stat-number">8+</span>
                     <span class="stat-label">Departments</span>
                 </div>
-                <div class="stat-item fade-in">
-                    <span class="stat-number">50+</span>
-                    <span class="stat-label">Custom Vehicles</span>
-                </div>
-                <div class="stat-item fade-in">
+                <div class="stat-item">
                     <span class="stat-number">24/7</span>
                     <span class="stat-label">Active Roleplay</span>
                 </div>
@@ -803,8 +956,8 @@
     <!-- CTA Section -->
     <section class="cta">
         <div class="container">
-            <h2 class="fade-in">Ready to Join Our Community?</h2>
-            <p class="fade-in">Become part of the most immersive Los Angeles roleplay experience on Roblox today.</p>
+            <h2>Ready to Join Our Community?</h2>
+            <p>Become part of the most immersive Los Angeles roleplay experience on Roblox today.</p>
             <div class="cta-btns">
                 <a href="http://los-angeles-roleplay.online/Applications" class="btn btn-light">Apply Now</a>
                 <a href="https://discord.gg/SAhNSas7yn" target="_blank" class="btn btn-secondary">Join Discord</a>
@@ -829,7 +982,7 @@
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="http://los-angeles-roleplay.online/Home" class="footer-btn">Home</a></li>
+                    <li><a href="http://los-angeles-roleplay.online" class="footer-btn">Home</a></li>
                     <li><a href="http://los-angeles-roleplay.online/About" class="footer-btn">About Us</a></li>
                     <li><a href="http://los-angeles-roleplay.online/Community" class="footer-btn">Community</a></li>
                     <li><a href="http://los-angeles-roleplay.online/Staff" class="footer-btn">Staff</a></li>
@@ -905,6 +1058,31 @@
                 }
             });
             
+            // Create particles
+            function createParticles(containerId, count) {
+                const container = document.getElementById(containerId);
+                for (let i = 0; i < count; i++) {
+                    const particle = document.createElement('div');
+                    particle.classList.add('particle');
+                    
+                    const size = Math.random() * 5 + 2;
+                    const left = Math.random() * 100;
+                    const animationDuration = Math.random() * 20 + 10;
+                    const animationDelay = Math.random() * 5;
+                    
+                    particle.style.width = `${size}px`;
+                    particle.style.height = `${size}px`;
+                    particle.style.left = `${left}%`;
+                    particle.style.animationDuration = `${animationDuration}s`;
+                    particle.style.animationDelay = `${animationDelay}s`;
+                    
+                    container.appendChild(particle);
+                }
+            }
+            
+            createParticles('particles', 30);
+            createParticles('particles2', 20);
+            
             // Scroll animations
             const observerOptions = {
                 threshold: 0.1,
@@ -914,14 +1092,51 @@
             const observer = new IntersectionObserver(function(entries) {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
+                        if (entry.target.classList.contains('feature-card')) {
+                            entry.target.classList.add('visible');
+                        } else if (entry.target.classList.contains('department-card')) {
+                            entry.target.classList.add('visible');
+                        } else if (entry.target.classList.contains('stat-item')) {
+                            entry.target.classList.add('visible');
+                        }
                     }
                 });
             }, observerOptions);
             
-            // Observe all fade-in elements
-            document.querySelectorAll('.fade-in').forEach(element => {
-                observer.observe(element);
+            // Observe all animated elements
+            document.querySelectorAll('.feature-card').forEach(card => {
+                observer.observe(card);
+            });
+            
+            document.querySelectorAll('.department-card').forEach(card => {
+                observer.observe(card);
+            });
+            
+            document.querySelectorAll('.stat-item').forEach(item => {
+                observer.observe(item);
+            });
+            
+            // Animate stats counting up
+            const statNumbers = document.querySelectorAll('.stat-number');
+            
+            statNumbers.forEach(stat => {
+                const text = stat.textContent;
+                if (text.includes('+')) {
+                    const target = parseInt(text);
+                    let current = 0;
+                    const increment = target / 50;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            current = target;
+                            clearInterval(timer);
+                        }
+                        stat.textContent = Math.floor(current).toString() + '+';
+                    }, 30);
+                } else if (text.includes('/')) {
+                    // For 24/7 stat, just fade in
+                    stat.style.opacity = '1';
+                }
             });
         });
     </script>
