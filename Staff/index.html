@@ -272,11 +272,10 @@
             margin: 0 auto;
         }
         
-        /* Staff Grid */
-        .staff-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
+        /* Single Staff Layout */
+        .staff-single {
+            display: flex;
+            justify-content: center;
             margin-top: 50px;
         }
         
@@ -290,6 +289,8 @@
             transform: translateY(50px);
             opacity: 0;
             border: 1px solid var(--border);
+            max-width: 800px;
+            width: 100%;
         }
         
         .staff-card.visible {
@@ -304,7 +305,7 @@
         
         .staff-header {
             background: linear-gradient(135deg, var(--primary), var(--accent));
-            padding: 30px;
+            padding: 40px;
             text-align: center;
             color: var(--white);
             position: relative;
@@ -324,8 +325,8 @@
         }
         
         .staff-avatar {
-            width: 120px;
-            height: 120px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             border: 5px solid rgba(255, 255, 255, 0.3);
             margin: 0 auto 20px;
@@ -341,7 +342,7 @@
         }
         
         .staff-name {
-            font-size: 1.8rem;
+            font-size: 2.5rem;
             margin-bottom: 10px;
             font-family: 'Montserrat', sans-serif;
             position: relative;
@@ -349,125 +350,145 @@
         }
         
         .staff-role {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             opacity: 0.9;
             position: relative;
             z-index: 2;
         }
         
         .staff-discord {
-            font-size: 0.9rem;
+            font-size: 1rem;
             margin-top: 10px;
             font-family: monospace;
             position: relative;
             z-index: 2;
             background: rgba(0, 0, 0, 0.2);
             display: inline-block;
-            padding: 5px 10px;
+            padding: 8px 15px;
             border-radius: 5px;
         }
         
         .staff-content {
-            padding: 25px;
+            padding: 40px;
         }
         
         .staff-bio {
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
         
         .staff-bio h3 {
-            font-size: 1.4rem;
+            font-size: 1.8rem;
             color: var(--primary);
             margin-bottom: 15px;
             font-family: 'Montserrat', sans-serif;
         }
         
         .staff-bio p {
-            font-size: 1rem;
+            font-size: 1.1rem;
             line-height: 1.7;
             color: var(--text);
         }
         
         /* Certification Badges */
         .certifications {
-            margin-top: 25px;
+            margin-top: 40px;
         }
         
-        .certifications h4 {
-            font-size: 1.2rem;
+        .certifications h3 {
+            font-size: 1.8rem;
             color: var(--primary);
-            margin-bottom: 15px;
+            margin-bottom: 30px;
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .certifications h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 3px;
+        }
+        
+        .cert-category {
+            margin-bottom: 30px;
+        }
+        
+        .cert-category h4 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 20px;
             font-family: 'Montserrat', sans-serif;
             display: flex;
             align-items: center;
             gap: 10px;
         }
         
-        .certifications h4 i {
+        .cert-category h4 i {
             color: var(--accent);
         }
         
         .badge-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 10px;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
         }
         
         .badge {
             background: var(--light);
-            padding: 10px;
-            border-radius: 8px;
+            padding: 15px;
+            border-radius: 12px;
             text-align: center;
             font-weight: 600;
             color: var(--text);
             transition: all 0.3s ease;
-            border-left: 3px solid var(--accent);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-            font-size: 0.85rem;
+            border-left: 4px solid var(--accent);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+            z-index: 1;
         }
         
         .badge:hover {
             background: var(--accent);
             color: var(--white);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 10px rgba(53, 132, 228, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(53, 132, 228, 0.2);
         }
         
-        /* Staff Filters */
-        .staff-filters {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-            gap: 15px;
+        .badge-content {
+            position: relative;
+            z-index: 2;
         }
         
-        .filter-btn {
-            background: var(--card-bg);
-            color: var(--text);
-            padding: 12px 25px;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 2px solid var(--border);
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        .badge-icon {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--accent);
         }
         
-        .filter-btn.active {
-            background: var(--accent);
+        .badge:hover .badge-icon {
             color: var(--white);
-            border-color: var(--accent);
-            box-shadow: 0 5px 15px rgba(53, 132, 228, 0.2);
         }
         
-        .filter-btn:hover:not(.active) {
-            background: var(--secondary);
-            color: var(--white);
-            border-color: var(--secondary);
+        .badge-name {
+            font-size: 0.95rem;
         }
         
         /* CTA Section */
@@ -696,23 +717,20 @@
                 font-size: 2rem;
             }
             
-            .staff-grid {
-                grid-template-columns: 1fr;
+            .staff-name {
+                font-size: 2rem;
             }
             
-            .staff-filters {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .filter-btn {
-                width: 100%;
-                max-width: 250px;
-                justify-content: center;
+            .staff-role {
+                font-size: 1.2rem;
             }
             
             .cta h2 {
                 font-size: 2rem;
+            }
+            
+            .badge-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
             }
         }
         
@@ -728,6 +746,14 @@
             
             .section-header h2 {
                 font-size: 1.8rem;
+            }
+            
+            .staff-header {
+                padding: 30px 20px;
+            }
+            
+            .staff-content {
+                padding: 30px 20px;
             }
             
             .badge-grid {
@@ -777,9 +803,9 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Our Staff Team</h1>
-            <p>Meet the dedicated individuals who make Los Angeles Roleplay possible</p>
+            <p>Meet the dedicated individual who makes Los Angeles Roleplay possible</p>
             <div class="hero-btns">
-                <a href="#staff" class="btn">Meet Our Staff</a>
+                <a href="#staff" class="btn">Meet Our Founder</a>
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSfzfmsfGTBv8NATJzldV0Cs_0U-91QMjUqfUF-loi8HfFHtBw/viewform?usp=header" target="_blank" class="btn btn-secondary">Apply for Staff</a>
             </div>
         </div>
@@ -789,163 +815,146 @@
     <section id="staff" class="section">
         <div class="container">
             <div class="section-header">
-                <h2>Meet Our Team</h2>
-                <p>The dedicated individuals leading our community and ensuring the best roleplay experience</p>
+                <h2>Meet Our Founder</h2>
+                <p>The dedicated individual leading our community and ensuring the best roleplay experience</p>
             </div>
-            
-            <div class="staff-filters">
-                <button class="filter-btn active" data-filter="all">
-                    <i class="fas fa-layer-group"></i> All Staff
-                </button>
-                <button class="filter-btn" data-filter="leadership">
-                    <i class="fas fa-crown"></i> Leadership
-                </button>
-                <button class="filter-btn" data-filter="admin">
-                    <i class="fas fa-user-shield"></i> Administrators
-                </button>
-                <button class="filter-btn" data-filter="moderator">
-                    <i class="fas fa-user-check"></i> Moderators
-                </button>
-            </div>
-            
-            <div class="staff-grid">
-                <!-- Staff Member 1 -->
-                <div class="staff-card" data-category="leadership">
+            <div class="staff-single">
+                <div class="staff-card">
                     <div class="staff-header">
                         <div class="staff-avatar">
                             <img src="https://ik.imagekit.io/seqcqjmzq/246fa7a21be7ee10245b7bc38b46cc06.webp?updatedAt=1763776718284" alt="Sittin">
                         </div>
                         <h2 class="staff-name">Sittin</h2>
                         <p class="staff-role">Owner & Founder</p>
-                        <p class="staff-discord">Discord: 1420968506794709042</p>
+                        <p class="staff-discord">Discord ID: 1420968506794709042</p>
                     </div>
                     <div class="staff-content">
                         <div class="staff-bio">
                             <h3>About Sittin</h3>
-                            <p>Sittin is the founder and owner of Los Angeles Roleplay, responsible for overseeing all aspects of the community. With extensive experience in server management and community development, Sittin ensures that LARP maintains its high standards of quality, immersion, and professionalism.</p>
+                            <p>Sittin is the founder and owner of Los Angeles Roleplay, responsible for overseeing all aspects of the community. With extensive experience in server management and community development, Sittin ensures that LARP maintains its high standards of quality, immersion, and professionalism. As the head of all departments and operations, Sittin works tirelessly to create the most authentic Los Angeles-based roleplay experience on Roblox.</p>
                         </div>
                         
                         <div class="certifications">
-                            <h4><i class="fas fa-award"></i> Certifications & Roles</h4>
-                            <div class="badge-grid">
-                                <div class="badge">Owner</div>
-                                <div class="badge">Head Management</div>
-                                <div class="badge">Developer</div>
-                                <div class="badge">Community Manager</div>
-                                <div class="badge">Senior High Rank</div>
-                                <div class="badge">Staff Instructor</div>
+                            <h3>Certifications & Roles</h3>
+                            
+                            <div class="cert-category">
+                                <h4><i class="fas fa-crown"></i> Leadership & Management</h4>
+                                <div class="badge-grid">
+                                    <div class="badge">
+                                        <div class="badge-content">
+                                            <div class="badge-icon"><i class="fas fa-crown"></i></div>
+                                            <div class="badge-name">Owner</div>
+                                        </div>
+                                    </div>
+                                    <div class="badge">
+                                        <div class="badge-content">
+                                            <div class="badge-icon"><i class="fas fa-user-tie"></i></div>
+                                            <div class="badge-name">Head Management</div>
+                                        </div>
+                                    </div>
+                                    <div class="badge">
+                                        <div class="badge-content">
+                                            <div class="badge-icon"><i class="fas fa-user-shield"></i></div>
+                                            <div class="badge-name">Head Supervisor</div>
+                                        </div>
+                                    </div>
+                                    <div class="badge">
+                                        <div class="badge-content">
+                                            <div class="badge-icon"><i class="fas fa-user-cog"></i></div>
+                                            <div class="badge-name">Head Administrator</div>
+                                        </div>
+                                    </div>
+                                    <div class="badge">
+                                        <div class="badge-content">
+                                            <div class="badge-icon"><i class="fas fa-user-check"></i></div>
+                                            <div class="badge-name">Head Moderator</div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Staff Member 2 -->
-                <div class="staff-card" data-category="leadership">
-                    <div class="staff-header">
-                        <div class="staff-avatar">
-                            <div style="width: 100%; height: 100%; background: #62a0ea; display: flex; align-items: center; justify-content: center; color: white; font-size: 2.5rem; font-weight: bold;">L</div>
-                        </div>
-                        <h2 class="staff-name">Loveshot</h2>
-                        <p class="staff-role">Retired Co-Owner</p>
-                        <p class="staff-discord">Discord: 123456789012345678</p>
-                    </div>
-                    <div class="staff-content">
-                        <div class="staff-bio">
-                            <h3>About Loveshot</h3>
-                            <p>Loveshot was a key co-owner who helped establish the foundations of Los Angeles Roleplay. With expertise in community management and roleplay systems, Loveshot contributed significantly to the server's development and growth during the early stages.</p>
-                        </div>
-                        
-                        <div class="certifications">
-                            <h4><i class="fas fa-award"></i> Certifications & Roles</h4>
-                            <div class="badge-grid">
-                                <div class="badge">Co-Owner</div>
-                                <div class="badge">Senior Management</div>
-                                <div class="badge">Roleplay Systems</div>
-                                <div class="badge">Community Development</div>
-                                <div class="badge">High Rank</div>
+                            
+                            <div class="cert-category">
+                                <h4><i class="fas fa-tools"></i> Technical & Development</h4>
+                                <div class="badge-grid">
+                                    <div class="badge">
+                                        <div class="badge-content">
+                                            <div class="badge-icon"><i class="fas fa-robot"></i></div>
+                                            <div class="badge-name">Server Automation</div>
+                                        </div>
+                                    </div>
+                                    <div class="badge">
+                                        <div class="badge-content">
+                                            <div class="badge-icon"><i class="fas fa-code"></i></div>
+                                            <div class="badge-name">Developer</div>
+                                        </div>
+                                    </div>
+                                    <div class="badge">
+                                        <div class="badge-content">
+                                            <div class="badge-icon"><i class="fas fa-balance-scale"></i></div>
+                                            <div class="badge-name">50/50 Permissions</div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Staff Member 3 -->
-                <div class="staff-card" data-category="admin">
-                    <div class="staff-header">
-                        <div class="staff-avatar">
-                            <div style="width: 100%; height: 100%; background: #3584e4; display: flex; align-items: center; justify-content: center; color: white; font-size: 2.5rem; font-weight: bold;">H</div>
-                        </div>
-                        <h2 class="staff-name">Harley</h2>
-                        <p class="staff-role">Dedicated Member</p>
-                        <p class="staff-discord">Discord: 987654321098765432</p>
-                    </div>
-                    <div class="staff-content">
-                        <div class="staff-bio">
-                            <h3>About Harley</h3>
-                            <p>Harley is a dedicated member of the Los Angeles Roleplay community who has shown exceptional commitment to the server's growth and development. With a focus on community engagement and support, Harley helps ensure all members have a positive experience.</p>
-                        </div>
-                        
-                        <div class="certifications">
-                            <h4><i class="fas fa-award"></i> Certifications & Roles</h4>
-                            <div class="badge-grid">
-                                <div class="badge">Community Support</div>
-                                <div class="badge">Event Coordinator</div>
-                                <div class="badge">Member Engagement</div>
-                                <div class="badge">Staff Team</div>
+                            
+                            <div class="cert-category">
+                                <h4><i class="fas fa-users"></i> Community & Staff</h4>
+                                <div class="badge-grid">
+                                    <div class="badge">
+                                        <div class="badge-content">
+                                            <div class="badge-icon"><i class="fas fa-users-cog"></i></div>
+                                            <div class="badge-name">Community Manager</div>
+                                        </div>
+                                    </div>
+                                    <div class="badge">
+                                        <div class="badge-content">
+                                            <div class="badge-icon"><i class="fas fa-handshake"></i></div>
+                                            <div class="badge-name">Affiliations Manager</div>
+                                        </div>
+                                    </div>
+                                    <div class="badge">
+                                        <div class="badge-content">
+                                            <div class="badge-icon"><i class="fas fa-users"></i></div>
+                                            <div class="badge-name">Staff Team</div>
+                                        </div>
+                                    </div>
+                                    <div class="badge">
+                                        <div class="badge-content">
+                                            <div class="badge-icon"><i class="fas fa-headset"></i></div>
+                                            <div class="badge-name">General Support</div>
+                                        </div>
+                                    </div>
+                                    <div class="badge">
+                                        <div class="badge-content">
+                                            <div class="badge-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                                            <div class="badge-name">Staff Instructor</div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Staff Member 4 -->
-                <div class="staff-card" data-category="moderator">
-                    <div class="staff-header">
-                        <div class="staff-avatar">
-                            <div style="width: 100%; height: 100%; background: #1a5fb4; display: flex; align-items: center; justify-content: center; color: white; font-size: 2.5rem; font-weight: bold;">A</div>
-                        </div>
-                        <h2 class="staff-name">Alex</h2>
-                        <p class="staff-role">Moderator</p>
-                        <p class="staff-discord">Discord: 555666777888999000</p>
-                    </div>
-                    <div class="staff-content">
-                        <div class="staff-bio">
-                            <h3>About Alex</h3>
-                            <p>Alex is a dedicated moderator who ensures that the server rules are followed and that all community members have a safe and enjoyable experience. With a fair and consistent approach, Alex helps maintain the high standards of Los Angeles Roleplay.</p>
-                        </div>
-                        
-                        <div class="certifications">
-                            <h4><i class="fas fa-award"></i> Certifications & Roles</h4>
-                            <div class="badge-grid">
-                                <div class="badge">Moderator</div>
-                                <div class="badge">Rule Enforcement</div>
-                                <div class="badge">Community Support</div>
-                                <div class="badge">Staff Team</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Staff Member 5 -->
-                <div class="staff-card" data-category="moderator">
-                    <div class="staff-header">
-                        <div class="staff-avatar">
-                            <div style="width: 100%; height: 100%; background: #62a0ea; display: flex; align-items: center; justify-content: center; color: white; font-size: 2.5rem; font-weight: bold;">J</div>
-                        </div>
-                        <h2 class="staff-name">Jordan</h2>
-                        <p class="staff-role">Trial Moderator</p>
-                        <p class="staff-discord">Discord: 111222333444555666</p>
-                    </div>
-                    <div class="staff-content">
-                        <div class="staff-bio">
-                            <h3>About Jordan</h3>
-                            <p>Jordan is a trial moderator who is learning the ropes of community management and rule enforcement. With enthusiasm and dedication, Jordan is working towards becoming a valuable member of the Los Angeles Roleplay staff team.</p>
-                        </div>
-                        
-                        <div class="certifications">
-                            <h4><i class="fas fa-award"></i> Certifications & Roles</h4>
-                            <div class="badge-grid">
-                                <div class="badge">Trial Moderator</div>
-                                <div class="badge">Community Support</div>
-                                <div class="badge">Staff Team</div>
+                            
+                            <div class="cert-category">
+                                <h4><i class="fas fa-star"></i> Rank & Oversight</h4>
+                                <div class="badge-grid">
+                                    <div class="badge">
+                                        <div class="badge-content">
+                                            <div class="badge-icon"><i class="fas fa-star"></i></div>
+                                            <div class="badge-name">Senior High Rank</div>
+                                        </div>
+                                    </div>
+                                    <div class="badge">
+                                        <div class="badge-content">
+                                            <div class="badge-icon"><i class="fas fa-star-half-alt"></i></div>
+                                            <div class="badge-name">High Rank</div>
+                                        </div>
+                                    </div>
+                                    <div class="badge">
+                                        <div class="badge-content">
+                                            <div class="badge-icon"><i class="fas fa-eye"></i></div>
+                                            <div class="badge-name">Internal Affairs Oversight</div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1057,31 +1066,6 @@
                     navbar.style.background = 'rgba(255, 255, 255, 0.98)';
                     navbar.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.1)';
                 }
-            });
-            
-            // Filter functionality
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            const staffCards = document.querySelectorAll('.staff-card');
-            
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    // Remove active class from all buttons
-                    filterBtns.forEach(b => b.classList.remove('active'));
-                    
-                    // Add active class to clicked button
-                    btn.classList.add('active');
-                    
-                    // Filter staff
-                    const filter = btn.getAttribute('data-filter');
-                    
-                    staffCards.forEach(card => {
-                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
-                            card.style.display = 'block';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
-                });
             });
             
             // Scroll animations
