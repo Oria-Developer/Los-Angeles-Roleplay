@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Los Angeles Roleplay</title>
+    <link rel="icon" type="image/png" href="https://ik.imagekit.io/seqcqjmzq/LARP%20-%20made%20by%20star%202.png?updatedAt=1759093844096">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #1a5fb4;
+            --secondary: #62a0ea;
+            --accent: #3584e4;
+            --light: #f6f5f4;
+            --dark: #241f31;
+            --white: #ffffff;
+            --background: #f8f9fa;
+            --text: #333333;
+            --card-bg: #ffffff;
+            --border: #e0e0e0;
+        }
+        
+        body {
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+            font-family: 'Open Sans', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        .navbar {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        
+        .nav-logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-logo img {
+            height: 50px;
+            transition: transform 0.3s ease;
+        }
+        
+        .nav-logo:hover img {
+            transform: scale(1.05);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-item {
+            margin: 0 15px;
+        }
+        
+        .nav-link {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--accent);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .nav-link.active {
+            color: var(--accent);
+        }
+        
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .nav-btn {
+            background: var(--accent);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(53, 132, 228, 0.3);
+        }
+        
+        .nav-btn:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(53, 132, 228, 0.4);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            transition: all 0.3s ease;
+            background-color: var(--text);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text);
+            position: relative;
+            overflow: hidden;
+            padding-top: 70px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(246, 249, 252, 0.9) 100%);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            color: var(--primary);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: var(--text);
+        }
+        
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--white);
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--accent);
+            color: var(--white);
+        }
+        
+        /* Sections */
+        .section {
+            padding: 80px 0;
+            background: var(--background);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--text);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* FAQ Search */
+        .faq-search {
+            max-width: 600px;
+            margin: 0 auto 50px;
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 18px 25px;
+            border: 2px solid var(--border);
+            border-radius: 50px;
+            font-size: 1.1rem;
+            background: var(--card-bg);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 5px 15px rgba(53, 132, 228, 0.1);
+        }
+        
+        .search-icon {
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+        
+        /* FAQ Categories */
+        .faq-categories {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .category-btn {
+            background: var(--card-bg);
+            color: var(--text);
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid var(--border);
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .category-btn.active {
+            background: var(--accent);
+            color: var(--white);
+            border-color: var(--accent);
+            box-shadow: 0 5px 15px rgba(53, 132, 228, 0.2);
+        }
+        
+        .category-btn:hover:not(.active) {
+            background: var(--secondary);
+            color: var(--white);
+            border-color: var(--secondary);
+        }
+        
+        /* FAQ Accordion */
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .faq-category-section {
+            margin-bottom: 50px;
+        }
+        
+        .faq-category-title {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+            font-family: 'Montserrat', sans-serif;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .faq-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .faq-question {
+            padding: 20px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background: rgba(98, 160, 234, 0.05);
+        }
+        
+        .faq-icon {
+            color: var(--accent);
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: rgba(98, 160, 234, 0.03);
+        }
+        
+        .faq-answer p {
+            padding: 20px 0;
+            line-height: 1.7;
+        }
+        
+        .faq-answer ul, .faq-answer ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .faq-answer li {
+            margin-bottom: 8px;
+        }
+        
+        .faq-item.active .faq-question {
+            background: rgba(98, 160, 234, 0.1);
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 1000px;
+            padding: 0 25px;
+        }
+        
+        /* Quick Help Section */
+        .quick-help {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 40px;
+            margin-top: 60px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+        
+        .quick-help h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .quick-help p {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        
+        .help-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: var(--white);
+            text-align: center;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .btn-light {
+            background: var(--white);
+            color: var(--primary);
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(10, 14, 41, 0.95);
+            color: var(--white);
+            padding: 70px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-section h3 {
+            color: var(--accent);
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-section ul li a {
+            color: var(--light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .footer-section ul li a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+        
+        .footer-logo {
+            max-width: 180px;
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            margin: 25px 0;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            margin: 0 12px;
+            font-size: 1.8rem;
+            color: var(--accent);
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-5px) scale(1.2);
+            color: var(--secondary);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-btn {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            padding: 10px 18px;
+            margin: 5px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideInDown {
+            from { 
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(200%) rotate(45deg); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: var(--card-bg);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+                padding: 20px 0;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-item {
+                margin: 15px 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .faq-categories {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .category-btn {
+                width: 100%;
+                max-width: 250px;
+                justify-content: center;
+            }
+            
+            .help-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta h2 {
+                font-size: 2rem;
+            }
+            
+            .quick-help {
+                padding: 30px 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+            
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .faq-question {
+                padding: 15px 20px;
+                font-size: 1rem;
+            }
+            
+            .faq-answer p {
+                padding: 15px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="http://los-angeles-roleplay.online">
+                    <img src="https://ik.imagekit.io/seqcqjmzq/LARP%20-%20made%20by%20star%202.png?updatedAt=1759093844096" alt="Los Angeles Roleplay Logo">
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="http://los-angeles-roleplay.online" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="http://los-angeles-roleplay.online/About" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="http://los-angeles-roleplay.online/Departments" class="nav-link">Departments</a>
+                </li>
+                <li class="nav-item">
+                    <a href="http://los-angeles-roleplay.online/Community" class="nav-link">Community</a>
+                </li>
+                <li class="nav-item">
+                    <a href="http://los-angeles-roleplay.online/Staff" class="nav-link">Staff</a>
+                </li>
+                <li class="nav-item">
+                    <a href="http://los-angeles-roleplay.online/Rules" class="nav-link">Rules</a>
+                </li>
+                <li class="nav-item">
+                    <a href="http://los-angeles-roleplay.online/Announcement" class="nav-link">Announcements</a>
+                </li>
+                <li class="nav-item">
+                    <a href="http://los-angeles-roleplay.online/FAQ" class="nav-link active">FAQ</a>
+                </li>
+                <li class="nav-item">
+                    <a href="http://los-angeles-roleplay.online/We-Need-You" class="nav-link nav-btn">We Need You</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Frequently Asked Questions</h1>
+            <p>Find answers to common questions about Los Angeles Roleplay</p>
+            <div class="hero-btns">
+                <a href="#faq" class="btn">Browse FAQs</a>
+                <a href="https://discord.gg/SAhNSas7yn" target="_blank" class="btn btn-secondary">Join Discord</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>How Can We Help You?</h2>
+                <p>Browse our frequently asked questions to find quick answers to common questions about our community, rules, and gameplay.</p>
+            </div>
+            
+            <div class="faq-search">
+                <input type="text" class="search-input" placeholder="Search for answers...">
+                <i class="fas fa-search search-icon"></i>
+            </div>
+            
+            <div class="faq-categories">
+                <button class="category-btn active" data-category="all">
+                    <i class="fas fa-layer-group"></i> All Questions
+                </button>
+                <button class="category-btn" data-category="general">
+                    <i class="fas fa-question-circle"></i> General
+                </button>
+                <button class="category-btn" data-category="getting-started">
+                    <i class="fas fa-play-circle"></i> Getting Started
+                </button>
+                <button class="category-btn" data-category="rules">
+                    <i class="fas fa-gavel"></i> Rules
+                </button>
+                <button class="category-btn" data-category="technical">
+                    <i class="fas fa-cogs"></i> Technical
+                </button>
+            </div>
+            
+            <div class="faq-container">
+                <!-- General Questions -->
+                <div class="faq-category-section" data-category="general">
+                    <h3 class="faq-category-title"><i class="fas fa-question-circle"></i> General Questions</h3>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What is Los Angeles Roleplay?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Los Angeles Roleplay (LARP) is a professional and immersive roleplay community based on the Emergency Response: Liberty County (ER:LC) game on Roblox. We aim to provide the most authentic Los Angeles-based roleplay experience with realistic departments, procedures, and community interactions.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Who runs Los Angeles Roleplay?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Los Angeles Roleplay is owned and operated by Sittin, who oversees all community operations, development, and management. The community is built with a focus on quality, professionalism, and immersive roleplay experiences.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Is Los Angeles Roleplay free to join?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes! Los Angeles Roleplay is completely free to join and participate in. We believe in creating an accessible community for all roleplay enthusiasts. While we may offer optional VIP perks or cosmetic items in the future, the core gameplay experience will always remain free.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What makes LARP different from other ER:LC servers?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Los Angeles Roleplay stands out through our commitment to:</p>
+                            <ul>
+                                <li>Professional and strict roleplay standards</li>
+                                <li>High-quality immersive experiences</li>
+                                <li>Active and dedicated staff team</li>
+                                <li>Custom systems and features</li>
+                                <li>Community-focused development</li>
+                                <li>Zero tolerance for rule-breaking and toxicity</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Getting Started -->
+                <div class="faq-category-section" data-category="getting-started">
+                    <h3 class="faq-category-title"><i class="fas fa-play-circle"></i> Getting Started</h3>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How do I join Los Angeles Roleplay?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>To join Los Angeles Roleplay, follow these steps:</p>
+                            <ol>
+                                <li>Join our Discord server using the link on our website</li>
+                                <li>Complete the verification process in the Discord</li>
+                                <li>Read and acknowledge all server rules</li>
+                                <li>Explore the different departments and roles available</li>
+                                <li>Start participating in roleplay scenarios and community events</li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What departments are available in LARP?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Los Angeles Roleplay features several departments to provide a comprehensive roleplay experience:</p>
+                            <ul>
+                                <li><strong>Los Angeles Police Department (LAPD):</strong> Maintain law and order, respond to emergencies</li>
+                                <li><strong>Los Angeles Fire Department (LAFD):</strong> Handle fires, medical emergencies, and rescues</li>
+                                <li><strong>Los Angeles EMS:</strong> Provide medical support and emergency care</li>
+                                <li><strong>California Department of Public Safety:</strong> Oversee operations and ensure roleplay standards</li>
+                            </ul>
+                            <p>Additional departments may be added as the community grows.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Do I need experience to join?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>No prior experience is required to join Los Angeles Roleplay! We welcome roleplayers of all experience levels. Our community is designed to help new members learn and grow. We provide resources, training, and guidance to ensure everyone can enjoy the roleplay experience regardless of their background.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How do I choose a department to join?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>When you join Los Angeles Roleplay, you'll have the opportunity to explore different departments and find the one that best fits your interests. Consider:</p>
+                            <ul>
+                                <li>Your preferred roleplay style (law enforcement, medical, firefighting, etc.)</li>
+                                <li>The type of scenarios you enjoy most</li>
+                                <li>Your availability and commitment level</li>
+                                <li>Your long-term roleplay goals</li>
+                            </ul>
+                            <p>You can always change departments later if you find another role more appealing.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Rules -->
+                <div class="faq-category-section" data-category="rules">
+                    <h3 class="faq-category-title"><i class="fas fa-gavel"></i> Rules & Guidelines</h3>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What is the Zero Tolerance Policy?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Our Zero Tolerance Policy means that we strictly enforce all server rules without exceptions. This includes:</p>
+                            <ul>
+                                <li>Automatic 24-hour ban for first-time RDM/VDM offenses</li>
+                                <li>Permanent ban for any form of hate speech or discrimination</li>
+                                <li>Immediate action against trolling, harassment, or toxicity</li>
+                                <li>Strict enforcement of roleplay quality standards</li>
+                            </ul>
+                            <p>This policy ensures that our community maintains a professional, respectful, and immersive environment for all members.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What are the consequences for breaking rules?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Consequences for rule violations depend on the severity and frequency of the offense:</p>
+                            <ul>
+                                <li><strong>Minor offenses:</strong> Warning or temporary suspension</li>
+                                <li><strong>Moderate offenses:</strong> Temporary ban (24 hours to 1 week)</li>
+                                <li><strong>Serious offenses:</strong> Extended ban (1 week to 1 month)</li>
+                                <li><strong>Severe offenses:</strong> Permanent ban with no appeal</li>
+                            </ul>
+                            <p>All decisions are made at the discretion of our staff team based on the specific circumstances of each case.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Can I appeal a ban or suspension?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, you can appeal bans or suspensions through our official appeal process. However, please note:</p>
+                            <ul>
+                                <li>Appeals must be submitted through the proper channels (not via DMs)</li>
+                                <li>You must wait at least 24 hours after receiving a ban before appealing</li>
+                                <li>Permanent bans for severe offenses (hate speech, discrimination) are typically not appealable</li>
+                                <li>You must provide valid evidence and reasoning for your appeal</li>
+                            </ul>
+                            <p>Appeal decisions are final and made by our senior staff members.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What is considered Fail Roleplay (FRP)?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Fail Roleplay (FRP) refers to actions that break immersion or don't make logical sense in a roleplay context. Examples include:</p>
+                            <ul>
+                                <li>Ignoring realistic consequences for actions</li>
+                                <li>Breaking character in serious situations</li>
+                                <li>Performing actions your character wouldn't reasonably do</li>
+                                <li>Using out-of-character knowledge in character</li>
+                                <li>Ignoring realistic limitations (health, resources, etc.)</li>
+                            </ul>
+                            <p>We expect all members to maintain realistic and immersive roleplay at all times.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Technical -->
+                <div class="faq-category-section" data-category="technical">
+                    <h3 class="faq-category-title"><i class="fas fa-cogs"></i> Technical Questions</h3>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What are the system requirements to play?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Since Los Angeles Roleplay is based on Roblox, the system requirements are minimal:</p>
+                            <ul>
+                                <li><strong>Operating System:</strong> Windows 7 or later, macOS 10.10 or later</li>
+                                <li><strong>Processor:</strong> Any processor made after 2005</li>
+                                <li><strong>Memory:</strong> 1GB RAM minimum</li>
+                                <li><strong>Graphics:</strong> DirectX 9 minimum and Shader Model 2.0</li>
+                                <li><strong>Storage:</strong> At least 20MB of free space</li>
+                                <li><strong>Internet:</strong> Stable broadband connection</li>
+                            </ul>
+                            <p>Most modern computers and devices can run Roblox without issues.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>I'm experiencing lag or connection issues. What can I do?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>If you're experiencing performance issues, try these troubleshooting steps:</p>
+                            <ol>
+                                <li>Check your internet connection and restart your router if needed</li>
+                                <li>Close other applications and browser tabs to free up system resources</li>
+                                <li>Lower your graphics settings in Roblox (Settings > Graphics Mode)</li>
+                                <li>Clear your Roblox cache (Settings > Reset Character)</li>
+                                <li>Try connecting from a different network if possible</li>
+                                <li>Update your graphics drivers</li>
+                            </ol>
+                            <p>If issues persist, contact our support team with details about your problem.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Are custom CAD systems available?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes! We're developing custom CAD (Computer-Aided Dispatch) systems programmed by Sittin specifically for Los Angeles Roleplay. These systems will enhance the roleplay experience with:</p>
+                            <ul>
+                                <li>Custom dispatch interfaces</li>
+                                <li>Department-specific features</li>
+                                <li>Realistic emergency response workflows</li>
+                                <li>Integrated communication systems</li>
+                            </ul>
+                            <p>The CAD systems are currently in development and will be released to the community soon.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How do I report a bug or technical issue?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>To report bugs or technical issues:</p>
+                            <ol>
+                                <li>Join our Discord server and navigate to the support channel</li>
+                                <li>Open a support ticket with detailed information about the issue</li>
+                                <li>Include screenshots or video evidence if possible</li>
+                                <li>Describe what you were doing when the issue occurred</li>
+                                <li>List any error messages you received</li>
+                            </ol>
+                            <p>Our development team will investigate and work to resolve the issue as quickly as possible.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="quick-help">
+                <h3>Still Need Help?</h3>
+                <p>If you couldn't find the answer to your question in our FAQ, our support team is here to help!</p>
+                <div class="help-btns">
+                    <a href="https://discord.gg/SAhNSas7yn" target="_blank" class="btn">Join Discord for Support</a>
+                    <a href="http://los-angeles-roleplay.online/Support" class="btn btn-secondary">Contact Support</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Join Our Community?</h2>
+            <p>Join Los Angeles Roleplay today and experience the most immersive ER:LC roleplay server with professional standards and an active community.</p>
+            <div class="cta-btns">
+                <a href="https://discord.gg/SAhNSas7yn" target="_blank" class="btn btn-light">Join Discord</a>
+                <a href="http://los-angeles-roleplay.online/Community" class="btn btn-secondary">Our Community</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <img src="https://ik.imagekit.io/seqcqjmzq/LARP%20-%20made%20by%20star%202.png?updatedAt=1759093844096" alt="Los Angeles Roleplay Logo" class="footer-logo">
+                <h3>Los Angeles Roleplay</h3>
+                <p>Building the most immersive Los Angeles-based roleplay experience on Roblox since 2025.</p>
+                <div class="social-links">
+                    <a href="https://discord.gg/SAhNSas7yn" target="_blank">
+                        <i class="fab fa-discord"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="http://los-angeles-roleplay.online" class="footer-btn">Home</a></li>
+                    <li><a href="http://los-angeles-roleplay.online/About" class="footer-btn">About Us</a></li>
+                    <li><a href="http://los-angeles-roleplay.online/Community" class="footer-btn">Community</a></li>
+                    <li><a href="http://los-angeles-roleplay.online/Staff" class="footer-btn">Staff</a></li>
+                    <li><a href="http://los-angeles-roleplay.online/FAQ" class="footer-btn">FAQ</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="http://los-angeles-roleplay.online/Rules" class="footer-btn">Rules & Guidelines</a></li>
+                    <li><a href="http://los-angeles-roleplay.online/FAQ" class="footer-btn">FAQ</a></li>
+                    <li><a href="http://los-angeles-roleplay.online/Support" class="footer-btn">Support</a></li>
+                    <li><a href="http://los-angeles-roleplay.online/Docs" class="footer-btn">Developer Docs</a></li>
+                    <li><a href="http://los-angeles-roleplay.online/Departments" class="footer-btn">Departments</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Programs</h3>
+                <ul>
+                    <li><a href="http://los-angeles-roleplay.online/We-Need-You" class="footer-btn">We Need You Program</a></li>
+                    <li><a href="http://los-angeles-roleplay.online/Applications" class="footer-btn">Applications</a></li>
+                    <li><a href="http://los-angeles-roleplay.online/Testing" class="footer-btn">Beta Testing</a></li>
+                    <li><a href="http://los-angeles-roleplay.online/Partners" class="footer-btn">Partners</a></li>
+                    <li><a href="http://los-angeles-roleplay.online/Events" class="footer-btn">Community Events</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="http://los-angeles-roleplay.online/Privacy-Policy" class="footer-btn">Privacy Policy</a></li>
+                    <li><a href="http://los-angeles-roleplay.online/Terms" class="footer-btn">Terms of Service</a></li>
+                    <li><a href="http://los-angeles-roleplay.online/Contact" class="footer-btn">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Los Angeles Roleplay Community. All rights reserved.</p>
+            <p>This site is not affiliated with Roblox Corporation.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+            
+            // Close menu when clicking on a link
+            document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }));
+            
+            // Navbar scroll effect
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 50) {
+                    navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                    navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+                } else {
+                    navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                    navbar.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.1)';
+                }
+            });
+            
+            // FAQ Accordion Functionality
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    // Close all other FAQ items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+            
+            // FAQ Category Filtering
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            const faqSections = document.querySelectorAll('.faq-category-section');
+            
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    btn.classList.add('active');
+                    
+                    // Get category to filter by
+                    const category = btn.getAttribute('data-category');
+                    
+                    // Show/hide FAQ sections based on category
+                    faqSections.forEach(section => {
+                        if (category === 'all' || section.getAttribute('data-category') === category) {
+                            section.style.display = 'block';
+                        } else {
+                            section.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // FAQ Search Functionality
+            const searchInput = document.querySelector('.search-input');
+            
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                
+                faqItems.forEach(item => {
+                    const question = item.querySelector('.faq-question span').textContent.toLowerCase();
+                    const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+                    
+                    if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                        item.style.display = 'block';
+                        
+                        // Highlight matching text
+                        if (searchTerm.length > 0) {
+                            highlightText(item, searchTerm);
+                        } else {
+                            removeHighlight(item);
+                        }
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+            
+            function highlightText(element, term) {
+                const question = element.querySelector('.faq-question span');
+                const answer = element.querySelector('.faq-answer');
+                
+                // Remove existing highlights
+                removeHighlight(element);
+                
+                // Highlight in question
+                question.innerHTML = question.textContent.replace(
+                    new RegExp(term, 'gi'),
+                    match => `<span style="background-color: #ffeb3b; padding: 2px 4px; border-radius: 3px;">${match}</span>`
+                );
+                
+                // Highlight in answer
+                answer.innerHTML = answer.innerHTML.replace(
+                    new RegExp(term, 'gi'),
+                    match => `<span style="background-color: #ffeb3b; padding: 2px 4px; border-radius: 3px;">${match}</span>`
+                );
+            }
+            
+            function removeHighlight(element) {
+                const question = element.querySelector('.faq-question span');
+                const answer = element.querySelector('.faq-answer');
+                
+                // Remove highlights from question
+                question.innerHTML = question.textContent;
+                
+                // Remove highlights from answer (more complex due to HTML structure)
+                const answerText = answer.textContent;
+                answer.innerHTML = `<p>${answerText}</p>`;
+            }
+        });
+    </script>
+</body>
+</html>
