@@ -435,6 +435,7 @@
             line-height: 1.7;
         }
         
+        /* Certification Badges */
         .certifications {
             margin-top: 40px;
         }
@@ -442,32 +443,98 @@
         .certifications h3 {
             font-size: 1.8rem;
             color: var(--primary);
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             font-family: 'Montserrat', sans-serif;
             text-align: center;
+            position: relative;
+            padding-bottom: 15px;
         }
         
-        .cert-grid {
+        .certifications h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 3px;
+        }
+        
+        .cert-category {
+            margin-bottom: 30px;
+        }
+        
+        .cert-category h4 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .cert-category h4 i {
+            color: var(--accent);
+        }
+        
+        .badge-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
             gap: 15px;
         }
         
-        .cert-item {
+        .badge {
             background: var(--light);
             padding: 15px;
-            border-radius: 10px;
+            border-radius: 12px;
             text-align: center;
             font-weight: 600;
             color: var(--dark);
             transition: all 0.3s ease;
             border-left: 4px solid var(--accent);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
         }
         
-        .cert-item:hover {
+        .badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+            z-index: 1;
+        }
+        
+        .badge:hover {
             background: var(--accent);
             color: var(--white);
             transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(53, 132, 228, 0.3);
+        }
+        
+        .badge-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .badge-icon {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+        
+        .badge:hover .badge-icon {
+            color: var(--white);
+        }
+        
+        .badge-name {
+            font-size: 0.95rem;
         }
         
         /* CTA Section */
@@ -743,8 +810,8 @@
                 font-size: 2.5rem;
             }
             
-            .cert-grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            .badge-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
             }
         }
         
@@ -770,8 +837,8 @@
                 padding: 30px 20px;
             }
             
-            .cert-grid {
-                grid-template-columns: 1fr;
+            .badge-grid {
+                grid-template-columns: 1fr 1fr;
             }
         }
     </style>
@@ -858,23 +925,125 @@
                         
                         <div class="certifications">
                             <h3>Certifications & Roles</h3>
-                            <div class="cert-grid">
-                                <div class="cert-item">Owner</div>
-                                <div class="cert-item">Server Automation</div>
-                                <div class="cert-item">Community Manager</div>
-                                <div class="cert-item">Head Management</div>
-                                <div class="cert-item">Senior High Rank</div>
-                                <div class="cert-item">Developer</div>
-                                <div class="cert-item">Head Supervisor</div>
-                                <div class="cert-item">Internal Affairs Oversight</div>
-                                <div class="cert-item">High Rank</div>
-                                <div class="cert-item">Head Administrator</div>
-                                <div class="cert-item">Head Moderator</div>
-                                <div class="cert-item">Affiliations Manager</div>
-                                <div class="cert-item">Staff Team</div>
-                                <div class="cert-item">General Support</div>
-                                <div class="cert-item">50/50 Permissions</div>
-                                <div class="cert-item">Staff Instructor</div>
+                            
+                            <div class="cert-category">
+                                <h4><i class="fas fa-crown"></i> Leadership & Management</h4>
+                                <div class="badge-grid">
+                                    <div class="badge">
+                                        <div class="badge-content">
+                                            <div class="badge-icon"><i class="fas fa-crown"></i></div>
+                                            <div class="badge-name">Owner</div>
+                                        </div>
+                                    </div>
+                                    <div class="badge">
+                                        <div class="badge-content">
+                                            <div class="badge-icon"><i class="fas fa-user-tie"></i></div>
+                                            <div class="badge-name">Head Management</div>
+                                        </div>
+                                    </div>
+                                    <div class="badge">
+                                        <div class="badge-content">
+                                            <div class="badge-icon"><i class="fas fa-user-shield"></i></div>
+                                            <div class="badge-name">Head Supervisor</div>
+                                        </div>
+                                    </div>
+                                    <div class="badge">
+                                        <div class="badge-content">
+                                            <div class="badge-icon"><i class="fas fa-user-cog"></i></div>
+                                            <div class="badge-name">Head Administrator</div>
+                                        </div>
+                                    </div>
+                                    <div class="badge">
+                                        <div class="badge-content">
+                                            <div class="badge-icon"><i class="fas fa-user-check"></i></div>
+                                            <div class="badge-name">Head Moderator</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="cert-category">
+                                <h4><i class="fas fa-tools"></i> Technical & Development</h4>
+                                <div class="badge-grid">
+                                    <div class="badge">
+                                        <div class="badge-content">
+                                            <div class="badge-icon"><i class="fas fa-robot"></i></div>
+                                            <div class="badge-name">Server Automation</div>
+                                        </div>
+                                    </div>
+                                    <div class="badge">
+                                        <div class="badge-content">
+                                            <div class="badge-icon"><i class="fas fa-code"></i></div>
+                                            <div class="badge-name">Developer</div>
+                                        </div>
+                                    </div>
+                                    <div class="badge">
+                                        <div class="badge-content">
+                                            <div class="badge-icon"><i class="fas fa-balance-scale"></i></div>
+                                            <div class="badge-name">50/50 Permissions</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="cert-category">
+                                <h4><i class="fas fa-users"></i> Community & Staff</h4>
+                                <div class="badge-grid">
+                                    <div class="badge">
+                                        <div class="badge-content">
+                                            <div class="badge-icon"><i class="fas fa-users-cog"></i></div>
+                                            <div class="badge-name">Community Manager</div>
+                                        </div>
+                                    </div>
+                                    <div class="badge">
+                                        <div class="badge-content">
+                                            <div class="badge-icon"><i class="fas fa-handshake"></i></div>
+                                            <div class="badge-name">Affiliations Manager</div>
+                                        </div>
+                                    </div>
+                                    <div class="badge">
+                                        <div class="badge-content">
+                                            <div class="badge-icon"><i class="fas fa-users"></i></div>
+                                            <div class="badge-name">Staff Team</div>
+                                        </div>
+                                    </div>
+                                    <div class="badge">
+                                        <div class="badge-content">
+                                            <div class="badge-icon"><i class="fas fa-headset"></i></div>
+                                            <div class="badge-name">General Support</div>
+                                        </div>
+                                    </div>
+                                    <div class="badge">
+                                        <div class="badge-content">
+                                            <div class="badge-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                                            <div class="badge-name">Staff Instructor</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="cert-category">
+                                <h4><i class="fas fa-star"></i> Rank & Oversight</h4>
+                                <div class="badge-grid">
+                                    <div class="badge">
+                                        <div class="badge-content">
+                                            <div class="badge-icon"><i class="fas fa-star"></i></div>
+                                            <div class="badge-name">Senior High Rank</div>
+                                        </div>
+                                    </div>
+                                    <div class="badge">
+                                        <div class="badge-content">
+                                            <div class="badge-icon"><i class="fas fa-star-half-alt"></i></div>
+                                            <div class="badge-name">High Rank</div>
+                                        </div>
+                                    </div>
+                                    <div class="badge">
+                                        <div class="badge-content">
+                                            <div class="badge-icon"><i class="fas fa-eye"></i></div>
+                                            <div class="badge-name">Internal Affairs Oversight</div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
