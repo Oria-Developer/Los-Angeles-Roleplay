@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Los Angeles Roleplay - Official Community</title>
+    <title>We Need You - Los Angeles Roleplay</title>
+    <link rel="icon" type="image/png" href="https://ik.imagekit.io/seqcqjmzq/LARP%20-%20made%20by%20star%202.png?updatedAt=1759093844096">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
@@ -30,6 +31,12 @@
             min-height: 100vh;
             font-family: 'Open Sans', sans-serif;
             overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
         
         /* Navigation */
@@ -135,70 +142,267 @@
             background-color: var(--dark);
         }
         
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        /* Header Styles */
+        header {
             text-align: center;
-            color: var(--white);
+            padding: 100px 0 60px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            margin: 90px 0 40px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
             position: relative;
             overflow: hidden;
-            padding-top: 70px;
+            animation: fadeIn 1.5s ease-out;
         }
         
-        .hero::before {
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo-container {
+            margin-bottom: 25px;
+            animation: bounceIn 1s ease-out 0.5s both;
+        }
+        
+        .logo {
+            max-width: 220px;
+            height: auto;
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
+        }
+        
+        .program-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--white);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(53, 132, 228, 0.4);
+            animation: slideInDown 0.8s ease-out 0.8s both;
+        }
+        
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: typewriter 2s steps(20) 1s both, blink 0.75s step-end infinite;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid var(--accent);
+            width: 0;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        h3 {
+            font-size: 1.8rem;
+            margin: 25px 0 15px;
+            color: var(--accent);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+        
+        h4 {
+            font-size: 1.4rem;
+            margin: 20px 0 10px;
+            color: var(--primary);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+        
+        .tagline {
+            font-size: 1.6rem;
+            margin-bottom: 30px;
+            color: var(--accent);
+            max-width: 800px;
+            animation: fadeIn 1.5s ease-out 1.8s both;
+        }
+        
+        .highlight {
+            background: rgba(53, 132, 228, 0.2);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        
+        .robux-reward {
+            font-size: 2.8rem;
+            font-weight: bold;
+            background: linear-gradient(90deg, #1a5fb4, #62a0ea, #3584e4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 20px 0;
+            padding: 20px 40px;
+            border: 3px solid var(--accent);
+            border-radius: 15px;
+            display: inline-block;
+            box-shadow: 0 8px 20px rgba(26, 95, 180, 0.4);
+            animation: pulse 2s infinite 2.5s, slideInUp 1s ease-out 2s both;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .robux-reward::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite 2.5s;
+        }
+        
+        /* Section Styles */
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 50px;
+            margin-bottom: 50px;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(53, 132, 228, 0.3);
+        }
+        
+        .section-header i {
+            font-size: 2.8rem;
+            margin-right: 25px;
+            color: var(--accent);
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .requirements {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .requirement-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 6px solid var(--accent);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .requirement-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            background: rgba(10, 14, 41, 0.7);
-            z-index: 1;
+            height: 5px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
         }
         
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            padding: 0 20px;
-            animation: fadeIn 1.5s ease-out;
+        .requirement-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
         
-        .hero h1 {
-            font-size: 4.5rem;
+        .requirement-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .requirement-card h4 {
+            color: var(--accent);
             margin-bottom: 20px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-            animation: slideInDown 1s ease-out 0.5s both;
-        }
-        
-        .hero p {
             font-size: 1.5rem;
-            margin-bottom: 30px;
-            animation: slideInUp 1s ease-out 0.8s both;
         }
         
-        .hero-btns {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            animation: fadeIn 1.5s ease-out 1.2s both;
+        .timeline {
+            position: relative;
+            margin: 40px 0;
+            padding-left: 50px;
         }
         
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+            box-shadow: 0 0 10px rgba(53, 132, 228, 0.5);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.6s ease;
+        }
+        
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 8px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 4px solid var(--white);
+            box-shadow: 0 0 0 3px var(--accent), 0 0 15px rgba(53, 132, 228, 0.8);
+        }
+        
+        /* Button Styles */
         .btn {
             display: inline-block;
-            background: var(--accent);
+            background: linear-gradient(90deg, var(--primary), var(--accent));
             color: var(--white);
-            padding: 15px 30px;
-            font-size: 1.2rem;
+            padding: 18px 35px;
+            font-size: 1.3rem;
             font-weight: bold;
             text-decoration: none;
             border-radius: 50px;
+            margin: 15px;
             transition: all 0.4s ease;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
             position: relative;
@@ -225,166 +429,38 @@
             left: 100%;
         }
         
-        .btn-secondary {
-            background: transparent;
-            border: 2px solid var(--white);
+        .btn-discord {
+            background: linear-gradient(90deg, #5865F2, #7289DA);
         }
         
-        /* Sections */
-        .section {
-            padding: 100px 0;
-            background: rgba(255, 255, 255, 0.95);
+        .btn-apply {
+            background: linear-gradient(90deg, #1a5fb4, #3584e4);
         }
         
-        .section-alt {
-            background: rgba(246, 245, 244, 0.95);
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .section-header h2 {
-            font-size: 3rem;
-            color: var(--primary);
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-        
-        .section-header p {
-            font-size: 1.2rem;
-            color: var(--dark);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        /* Features */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-        
-        .feature-card {
-            background: var(--white);
-            padding: 40px 30px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-            transition: all 0.5s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--accent);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.5s ease;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-        
-        .feature-card:hover::before {
-            transform: scaleX(1);
-        }
-        
-        .feature-icon {
-            font-size: 3.5rem;
-            color: var(--accent);
-            margin-bottom: 25px;
-            transition: all 0.5s ease;
-        }
-        
-        .feature-card:hover .feature-icon {
-            transform: scale(1.2) rotate(5deg);
-        }
-        
-        .feature-card h3 {
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-            font-family: 'Montserrat', sans-serif;
-        }
-        
-        /* Departments */
-        .departments {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin-top: 50px;
-        }
-        
-        .department-card {
-            background: var(--white);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-            transition: all 0.5s ease;
-            position: relative;
-        }
-        
-        .department-card:hover {
-            transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-        
-        .department-img {
-            height: 200px;
-            background: var(--accent);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-size: 4rem;
-        }
-        
-        .department-content {
-            padding: 25px;
-        }
-        
-        .department-content h3 {
-            font-size: 1.6rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-            font-family: 'Montserrat', sans-serif;
-        }
-        
-        /* Stats */
+        /* Stats Section */
         .stats {
             display: flex;
             justify-content: space-around;
             flex-wrap: wrap;
-            margin-top: 50px;
+            margin: 50px 0;
             text-align: center;
         }
         
         .stat-item {
             margin: 20px;
-            padding: 30px;
-            min-width: 200px;
-            background: var(--white);
+            padding: 25px;
+            min-width: 220px;
+            background: rgba(255, 255, 255, 0.7);
             border-radius: 15px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
             transition: all 0.5s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .stat-item.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .stat-item:hover {
@@ -407,65 +483,129 @@
             font-weight: 600;
         }
         
-        /* CTA Section */
-        .cta {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+        /* Urgent Banner */
+        .urgent-banner {
+            background: linear-gradient(90deg, var(--primary), var(--accent));
             color: var(--white);
+            padding: 20px;
+            border-radius: 15px;
             text-align: center;
-            padding: 100px 0;
+            margin: 30px 0;
+            font-weight: bold;
+            font-size: 1.3rem;
+            box-shadow: 0 8px 20px rgba(26, 95, 180, 0.5);
+            animation: pulse 2s infinite, shake 0.5s ease-in-out 3s 3;
             position: relative;
             overflow: hidden;
         }
         
-        .cta::before {
+        .urgent-banner::before {
             content: '';
             position: absolute;
             top: -50%;
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
             transform: rotate(45deg);
             animation: shine 3s infinite;
         }
         
-        .cta h2 {
-            font-size: 3.5rem;
+        /* Departments Grid */
+        .departments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .department-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.5s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .department-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+        
+        .department-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .department-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .department-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .department-icon {
+            font-size: 3rem;
+            color: var(--accent);
             margin-bottom: 20px;
-            font-family: 'Montserrat', sans-serif;
-            position: relative;
-            z-index: 2;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s ease;
         }
         
-        .cta p {
-            font-size: 1.3rem;
-            margin-bottom: 40px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            position: relative;
-            z-index: 2;
+        .department-card:hover .department-icon {
+            transform: scale(1.2) rotate(5deg);
         }
         
-        .cta-btns {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            position: relative;
-            z-index: 2;
+        /* Info Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
         }
         
-        .btn-light {
-            background: var(--white);
-            color: var(--primary);
+        .info-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.5s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .info-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
         
         /* Footer */
         footer {
             background: rgba(10, 14, 41, 0.95);
             color: var(--white);
-            padding: 70px 0 30px;
+            padding: 60px 0 30px;
+            margin-top: 70px;
+            border-radius: 20px 20px 0 0;
         }
         
         .footer-content {
@@ -577,24 +717,87 @@
             }
         }
         
+        @keyframes bounceIn {
+            0% { 
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% { 
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            70% { 
+                transform: scale(0.9);
+            }
+            100% { 
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes blink {
+            from, to { border-color: transparent; }
+            50% { border-color: var(--accent); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+        
         @keyframes shine {
             0% { transform: translateX(-100%) rotate(45deg); }
             100% { transform: translateX(200%) rotate(45deg); }
         }
         
-        /* Scroll Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
+        /* Floating Elements */
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
         }
         
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .floating-element {
+            position: absolute;
+            background: rgba(53, 132, 228, 0.1);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
         }
         
-        /* Responsive */
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Responsive Styles */
         @media (max-width: 768px) {
             .nav-menu {
                 position: fixed;
@@ -633,35 +836,53 @@
                 transform: translateY(-8px) rotate(-45deg);
             }
             
-            .hero h1 {
-                font-size: 3rem;
+            h1 {
+                font-size: 2.8rem;
             }
             
-            .hero p {
-                font-size: 1.2rem;
+            h2 {
+                font-size: 2rem;
             }
             
-            .section-header h2 {
-                font-size: 2.5rem;
+            .section {
+                padding: 30px;
             }
             
-            .cta h2 {
-                font-size: 2.5rem;
+            .stats {
+                flex-direction: column;
+            }
+            
+            .header-content {
+                padding: 0 10px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .robux-reward {
+                font-size: 2rem;
+                padding: 15px 25px;
             }
         }
         
         @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 2.5rem;
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .robux-reward {
+                font-size: 1.6rem;
+                padding: 12px 20px;
             }
             
             .btn {
-                padding: 12px 25px;
-                font-size: 1rem;
+                padding: 15px 25px;
+                font-size: 1.1rem;
             }
             
-            .section-header h2 {
-                font-size: 2rem;
+            .section {
+                padding: 20px;
             }
         }
     </style>
@@ -700,140 +921,223 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Los Angeles Roleplay</h1>
-            <p>Experience the most immersive Los Angeles-based roleplay on Roblox</p>
-            <div class="hero-btns">
-                <a href="http://los-angeles-roleplay.online/About" class="btn">Learn More</a>
-                <a href="https://discord.gg/SAhNSas7yn" target="_blank" class="btn btn-secondary">Join Discord</a>
+    <div class="container">
+        <header>
+            <div class="floating-elements">
+                <!-- Floating elements will be generated by JavaScript -->
             </div>
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="https://ik.imagekit.io/seqcqjmzq/LARP%20-%20made%20by%20star%202.png?updatedAt=1759093844096" alt="Los Angeles Roleplay Logo" class="logo">
+                </div>
+                <div class="program-badge">OFFICIAL PROGRAM 2025</div>
+                <h1>WE NEED YOU</h1>
+                <p class="tagline">Join the Los Angeles Roleplay Design Team and Help Build Our Community</p>
+                <h2><i class="fas fa-car"></i> Livery & Uniform Designers Wanted</h2>
+                <div class="robux-reward">Earn 12,000 Robux Monthly</div>
+                <p>Official announcement from the Los Angeles Roleplay Founder</p>
+                
+                <div class="social-links">
+                    <a href="https://discord.gg/SAhNSas7yn" target="_blank" class="btn btn-discord">
+                        <i class="fab fa-discord"></i> Join Our Discord
+                    </a>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSe8yXJTdm2ImO0_4ZyfOoT3qqJkwK7QQzX7PO7os1m6z-kpIA/viewform?usp=dialog" target="_blank" class="btn btn-apply">
+                        <i class="fas fa-edit"></i> Apply Now
+                    </a>
+                </div>
+            </div>
+        </header>
+        
+        <div class="urgent-banner">
+            <i class="fas fa-exclamation-circle"></i> URGENT: We need designers within 7 days!
         </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2>Why Choose Los Angeles Roleplay?</h2>
-                <p>Our community offers an unparalleled roleplay experience with realistic departments, custom content, and an active community.</p>
+        
+        <section class="section" id="about">
+            <div class="section-header">
+                <i class="fas fa-info-circle"></i>
+                <h2>About the "We Need You" Program</h2>
             </div>
-            <div class="features">
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Realistic Departments</h3>
-                    <p>Join authentic police, fire, medical, and federal agencies with detailed uniforms and vehicles.</p>
+            <p>The <span class="highlight">"We Need You"</span> program is our 2025 initiative to recruit talented designers who can help create the visual identity of our growing Los Angeles Roleplay community.</p>
+            <p>As we rebuild and expand, we need dedicated team members who can produce high-quality vehicle liveries and character uniforms that will make our community stand out in the Roblox universe.</p>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number">5+</span>
+                    <span class="stat-label">Designers Needed</span>
                 </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Active Community</h3>
-                    <p>Connect with hundreds of dedicated roleplayers in our Discord community and in-game.</p>
+                <div class="stat-item">
+                    <span class="stat-number">7</span>
+                    <span class="stat-label">Days to Apply</span>
                 </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <h3>Custom Content</h3>
-                    <p>Enjoy unique liveries, uniforms, and assets created specifically for our community.</p>
+                <div class="stat-item">
+                    <span class="stat-number">2</span>
+                    <span class="stat-label">Liveries Per Week</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">12K</span>
+                    <span class="stat-label">Robux Monthly</span>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Departments Section -->
-    <section class="section section-alt">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2>Our Departments</h2>
-                <p>Join one of our specialized departments and experience roleplay like never before.</p>
+        </section>
+        
+        <section class="section" id="requirements">
+            <div class="section-header">
+                <i class="fas fa-tasks"></i>
+                <h2>Program Requirements</h2>
             </div>
-            <div class="departments">
-                <div class="department-card fade-in">
-                    <div class="department-img" style="background: #1a5fb4;">
+            <p>To maintain quality and consistency in our community, we have specific requirements for all program participants:</p>
+            
+            <div class="requirements">
+                <div class="requirement-card">
+                    <h4><i class="fas fa-palette"></i> Design Quality</h4>
+                    <p>All liveries and uniforms must meet our "good quality" standards. Subpar work may result in termination from the program.</p>
+                </div>
+                
+                <div class="requirement-card">
+                    <h4><i class="fas fa-calendar-week"></i> Weekly Output</h4>
+                    <p>You must create at least two liveries every 7 days. Consistency is key to maintaining your position in the program.</p>
+                </div>
+                
+                <div class="requirement-card">
+                    <h4><i class="fas fa-clock"></i> Active Participation</h4>
+                    <p>Regular communication and timely delivery of assignments are required. Inactivity may result in removal from the program.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section" id="departments">
+            <div class="section-header">
+                <i class="fas fa-shield-alt"></i>
+                <h2>All Departments Needing Designs</h2>
+            </div>
+            <p>We need designs for ALL departments in our roleplay community. Each requires distinctive liveries and uniforms.</p>
+            
+            <div class="departments-grid">
+                <div class="department-card">
+                    <div class="department-icon">
                         <i class="fas fa-police-car"></i>
                     </div>
-                    <div class="department-content">
-                        <h3>Police Department</h3>
-                        <p>Enforce the law, respond to emergencies, and protect the citizens of Los Angeles.</p>
-                    </div>
+                    <h4>Police Department</h4>
+                    <p>Patrol cars, SUVs, SWAT vehicles, and all officer uniforms</p>
                 </div>
-                <div class="department-card fade-in">
-                    <div class="department-img" style="background: #b21f1f;">
-                        <i class="fas fa-fire"></i>
-                    </div>
-                    <div class="department-content">
-                        <h3>Fire & Rescue</h3>
-                        <p>Respond to fires, medical emergencies, and rescue operations across the city.</p>
-                    </div>
-                </div>
-                <div class="department-card fade-in">
-                    <div class="department-img" style="background: #2ecc71;">
+                
+                <div class="department-card">
+                    <div class="department-icon">
                         <i class="fas fa-ambulance"></i>
                     </div>
-                    <div class="department-content">
-                        <h3>Medical Services</h3>
-                        <p>Provide critical medical care and transport patients to hospitals.</p>
-                    </div>
+                    <h4>Fire & Rescue</h4>
+                    <p>Fire engines, ambulances, rescue vehicles, and firefighter uniforms</p>
                 </div>
-                <div class="department-card fade-in">
-                    <div class="department-img" style="background: #9b59b6;">
+                
+                <div class="department-card">
+                    <div class="department-icon">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <h4>Medical Services</h4>
+                    <p>Ambulances, medical response units, and EMT/paramedic uniforms</p>
+                </div>
+                
+                <div class="department-card">
+                    <div class="department-icon">
                         <i class="fas fa-gavel"></i>
                     </div>
-                    <div class="department-content">
-                        <h3>Federal Agencies</h3>
-                        <p>Work with FBI, DEA, and Homeland Security on special operations.</p>
+                    <h4>Federal Agencies</h4>
+                    <p>FBI, DEA, Homeland Security vehicles and agent uniforms</p>
+                </div>
+                
+                <div class="department-card">
+                    <div class="department-icon">
+                        <i class="fas fa-dog"></i>
                     </div>
+                    <h4>K-9 Unit</h4>
+                    <p>K-9 vehicles and handler uniforms</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+        
+        <section class="section" id="benefits">
+            <div class="section-header">
+                <i class="fas fa-money-bill-wave"></i>
+                <h2>Program Benefits & Compensation</h2>
+            </div>
+            <p>As a valued member of our design team, you'll receive both financial rewards and community recognition:</p>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4><i class="fas fa-coins"></i> Robux Earnings</h4>
+                    <p>Earn <strong>12,000 Robux monthly</strong> for consistent, high-quality designs that meet our standards.</p>
+                </div>
+                
+                <div class="info-card">
+                    <h4><i class="fas fa-medal"></i> Quality Bonuses</h4>
+                    <p>Exceptional designs that receive positive community feedback may qualify for additional bonus payments.</p>
+                </div>
+                
+                <div class="info-card">
+                    <h4><i class="fas fa-users"></i> Leadership Opportunities</h4>
+                    <p>Potential to move into leadership positions as the community grows and expands in 2025.</p>
+                </div>
+                
+                <div class="info-card">
+                    <h4><i class="fas fa-certificate"></i> Community Recognition</h4>
+                    <p>Get credited for your work and build your reputation within the Roblox design community.</p>
+                </div>
+            </div>
+            
+            <div class="robux-reward">Apply today and start earning 12K Robux monthly!</div>
+            
+            <center>
+                <a href="https://docs.google.comforms/d/e/1FAIpQLSe8yXJTdm2ImO0_4ZyfOoT3qqJkwK7QQzX7PO7os1m6z-kpIA/viewform?usp=dialog" target="_blank" class="btn btn-apply">
+                    <i class="fas fa-edit"></i> Apply Now
+                </a>
+            </center>
+        </section>
+        
+        <section class="section" id="apply">
+            <div class="section-header">
+                <i class="fas fa-edit"></i>
+                <h2>How to Apply</h2>
+            </div>
+            <p>Ready to become part of our design team? Follow these steps to apply for the <span class="highlight">"We Need You"</span> program:</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Step 1: Review Requirements</h3>
+                    <p>Make sure you understand the program requirements and can commit to the weekly design output.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3>Step 2: Prepare Your Portfolio</h3>
+                    <p>Gather examples of your previous design work (Roblox or other platforms). If you don't have previous work, create sample designs to showcase your skills.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3>Step 3: Complete the Application Form</h3>
+                    <p>Fill out our official Google Form with your information and portfolio links.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3>Step 4: Join Our Discord</h3>
+                    <p>Connect with our community and stay updated on your application status.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3>Step 5: Trial Assignment</h3>
+                    <p>If selected, you'll complete a small trial assignment to demonstrate your design capabilities.</p>
+                </div>
+            </div>
+            
+            <center>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSe8yXJTdm2ImO0_4ZyfOoT3qqJkwK7QQzX7PO7os1m6z-kpIA/viewform?usp=dialog" target="_blank" class="btn btn-apply">
+                    <i class="fas fa-edit"></i> Start Your Application
+                </a>
+                <a href="https://discord.gg/SAhNSas7yn" target="_blank" class="btn btn-discord">
+                    <i class="fab fa-discord"></i> Join Our Discord
+                </a>
+            </center>
+        </section>
+    </div>
 
-    <!-- Stats Section -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2>Community Stats</h2>
-                <p>Join our growing community of dedicated roleplayers.</p>
-            </div>
-            <div class="stats">
-                <div class="stat-item fade-in">
-                    <span class="stat-number">500+</span>
-                    <span class="stat-label">Active Members</span>
-                </div>
-                <div class="stat-item fade-in">
-                    <span class="stat-number">6</span>
-                    <span class="stat-label">Departments</span>
-                </div>
-                <div class="stat-item fade-in">
-                    <span class="stat-number">50+</span>
-                    <span class="stat-label">Custom Vehicles</span>
-                </div>
-                <div class="stat-item fade-in">
-                    <span class="stat-number">24/7</span>
-                    <span class="stat-label">Active Roleplay</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta">
-        <div class="container">
-            <h2 class="fade-in">Ready to Join Our Community?</h2>
-            <p class="fade-in">Become part of the most immersive Los Angeles roleplay experience on Roblox today.</p>
-            <div class="cta-btns">
-                <a href="http://los-angeles-roleplay.online/Applications" class="btn btn-light">Apply Now</a>
-                <a href="https://discord.gg/SAhNSas7yn" target="_blank" class="btn btn-secondary">Join Discord</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-section">
@@ -898,8 +1202,31 @@
     </footer>
 
     <script>
-        // Mobile Menu Toggle
+        // Create floating elements
         document.addEventListener('DOMContentLoaded', function() {
+            const floatingContainer = document.querySelector('.floating-elements');
+            const elementCount = 15;
+            
+            for (let i = 0; i < elementCount; i++) {
+                const element = document.createElement('div');
+                element.classList.add('floating-element');
+                
+                // Random properties
+                const size = Math.random() * 60 + 20;
+                const left = Math.random() * 100;
+                const animationDuration = Math.random() * 20 + 10;
+                const animationDelay = Math.random() * 5;
+                
+                element.style.width = `${size}px`;
+                element.style.height = `${size}px`;
+                element.style.left = `${left}%`;
+                element.style.animationDuration = `${animationDuration}s`;
+                element.style.animationDelay = `${animationDelay}s`;
+                
+                floatingContainer.appendChild(element);
+            }
+            
+            // Mobile Menu Toggle
             const hamburger = document.querySelector('.hamburger');
             const navMenu = document.querySelector('.nav-menu');
             
@@ -926,6 +1253,50 @@
                 }
             });
             
+            // Animate stats counting up
+            const statNumbers = document.querySelectorAll('.stat-number');
+            
+            statNumbers.forEach(stat => {
+                const text = stat.textContent;
+                if (text.includes('K')) {
+                    const target = parseInt(text) * 1000;
+                    let current = 0;
+                    const increment = target / 50;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            current = target;
+                            clearInterval(timer);
+                        }
+                        stat.textContent = Math.floor(current/1000) + 'K';
+                    }, 30);
+                } else if (text.includes('+')) {
+                    const target = parseInt(text);
+                    let current = 0;
+                    const increment = target / 50;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            current = target;
+                            clearInterval(timer);
+                        }
+                        stat.textContent = Math.floor(current).toString() + '+';
+                    }, 30);
+                } else {
+                    const target = parseInt(stat.textContent);
+                    let current = 0;
+                    const increment = target / 50;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            current = target;
+                            clearInterval(timer);
+                        }
+                        stat.textContent = Math.floor(current).toString();
+                    }, 30);
+                }
+            });
+            
             // Scroll animations
             const observerOptions = {
                 threshold: 0.1,
@@ -936,13 +1307,53 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
+                        
+                        // If it's a stats section, animate each stat item with a delay
+                        if (entry.target.classList.contains('section') && entry.target.id === 'about') {
+                            const statItems = document.querySelectorAll('.stat-item');
+                            statItems.forEach((item, index) => {
+                                setTimeout(() => {
+                                    item.classList.add('visible');
+                                }, index * 200);
+                            });
+                        }
+                        
+                        // If it's a departments section, animate each department card with a delay
+                        if (entry.target.classList.contains('section') && entry.target.id === 'departments') {
+                            const departmentCards = document.querySelectorAll('.department-card');
+                            departmentCards.forEach((card, index) => {
+                                setTimeout(() => {
+                                    card.classList.add('visible');
+                                }, index * 150);
+                            });
+                        }
+                        
+                        // If it's a benefits section, animate each info card with a delay
+                        if (entry.target.classList.contains('section') && entry.target.id === 'benefits') {
+                            const infoCards = document.querySelectorAll('.info-card');
+                            infoCards.forEach((card, index) => {
+                                setTimeout(() => {
+                                    card.classList.add('visible');
+                                }, index * 150);
+                            });
+                        }
+                        
+                        // If it's an apply section, animate each timeline item with a delay
+                        if (entry.target.classList.contains('section') && entry.target.id === 'apply') {
+                            const timelineItems = document.querySelectorAll('.timeline-item');
+                            timelineItems.forEach((item, index) => {
+                                setTimeout(() => {
+                                    item.classList.add('visible');
+                                }, index * 300);
+                            });
+                        }
                     }
                 });
             }, observerOptions);
             
-            // Observe all fade-in elements
-            document.querySelectorAll('.fade-in').forEach(element => {
-                observer.observe(element);
+            // Observe all sections
+            document.querySelectorAll('.section').forEach(section => {
+                observer.observe(section);
             });
         });
     </script>
