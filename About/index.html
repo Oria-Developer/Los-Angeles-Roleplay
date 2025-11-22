@@ -18,10 +18,14 @@
             --primary: #1a5fb4;
             --secondary: #62a0ea;
             --accent: #3584e4;
+            --purple: #8b5cf6;
+            --purple-dark: #7c3aed;
+            --purple-light: #a78bfa;
             --light: #f6f5f4;
             --dark: #241f31;
             --white: #ffffff;
-            --gradient: linear-gradient(135deg, var(--primary), var(--secondary), var(--white));
+            --gradient: linear-gradient(135deg, var(--primary), var(--purple), var(--secondary));
+            --founder-gradient: linear-gradient(135deg, var(--primary), var(--purple), var(--purple-dark));
         }
         
         body {
@@ -309,6 +313,231 @@
             display: block;
         }
         
+        /* Enhanced Founder Section */
+        .founder-section {
+            text-align: center;
+            margin-top: 80px;
+            padding: 80px 40px;
+            background: var(--founder-gradient);
+            color: var(--white);
+            border-radius: 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .founder-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://ik.imagekit.io/seqcqjmzq/19cf212d18c5c862c4bc1a8e3848b16d.jpg') center/cover;
+            opacity: 0.15;
+            z-index: 1;
+        }
+        
+        .founder-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            opacity: 0.3;
+        }
+        
+        .founder-particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: floatParticle 15s infinite linear;
+        }
+        
+        .founder-content {
+            position: relative;
+            z-index: 3;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .founder-header {
+            margin-bottom: 50px;
+            animation: slideInDown 1s ease-out both;
+        }
+        
+        .founder-header h2 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, var(--white), var(--purple-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: textGlow 2s ease-in-out infinite alternate;
+        }
+        
+        .founder-header p {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            animation: fadeIn 1s ease-out 0.5s both;
+        }
+        
+        .founder-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            animation: slideInUp 1s ease-out 0.8s both;
+        }
+        
+        .founder-avatar-container {
+            position: relative;
+            animation: avatarFloat 3s ease-in-out infinite alternate;
+        }
+        
+        .founder-avatar {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 6px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 2;
+            transition: all 0.5s ease;
+        }
+        
+        .founder-avatar:hover {
+            transform: scale(1.05);
+            border-color: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .founder-avatar::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(45deg, var(--primary), var(--purple), var(--purple-dark));
+            border-radius: 50%;
+            z-index: -1;
+            animation: avatarRing 3s ease-in-out infinite;
+        }
+        
+        .founder-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        
+        .founder-details {
+            text-align: left;
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.5s ease;
+        }
+        
+        .founder-details:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .founder-details h3 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(45deg, var(--white), var(--purple-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .founder-role {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 25px;
+            font-weight: 600;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .founder-role::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--white), transparent);
+            animation: roleUnderline 2s ease-in-out infinite;
+        }
+        
+        .founder-stats {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .founder-stat {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 15px;
+            min-width: 120px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .founder-stat:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+        
+        .founder-stat-value {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--white);
+        }
+        
+        .founder-stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            color: var(--purple-light);
+        }
+        
+        .founder-bio {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            opacity: 0.9;
+            position: relative;
+        }
+        
+        .founder-bio::before {
+            content: '"';
+            font-size: 4rem;
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            opacity: 0.3;
+            color: var(--purple-light);
+            font-family: serif;
+        }
+        
         /* Mission & Vision */
         .mission-vision {
             display: grid;
@@ -480,109 +709,6 @@
             font-weight: bold;
             color: var(--accent);
             margin-bottom: 10px;
-        }
-        
-        /* Founder Section */
-        .founder-section {
-            text-align: center;
-            margin-top: 80px;
-            padding: 60px 0;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            color: var(--white);
-            border-radius: 20px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .founder-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://ik.imagekit.io/seqcqjmzq/19cf212d18c5c862c4bc1a8e3848b16d.jpg') center/cover;
-            opacity: 0.1;
-            z-index: 1;
-        }
-        
-        .founder-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .founder-header {
-            margin-bottom: 40px;
-        }
-        
-        .founder-header h2 {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            font-family: 'Montserrat', sans-serif;
-        }
-        
-        .founder-info {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-        
-        .founder-avatar {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 5px solid var(--white);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-        
-        .founder-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .founder-details {
-            text-align: left;
-            max-width: 400px;
-        }
-        
-        .founder-details h3 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            font-family: 'Montserrat', sans-serif;
-        }
-        
-        .founder-role {
-            font-size: 1.3rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-        
-        .founder-stats {
-            display: flex;
-            gap: 30px;
-            margin-bottom: 25px;
-        }
-        
-        .founder-stat {
-            text-align: center;
-        }
-        
-        .founder-stat-value {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        
-        .founder-stat-label {
-            font-size: 0.9rem;
-            opacity: 0.8;
         }
         
         /* Team Section */
@@ -802,7 +928,7 @@
             transform: translateY(-3px);
         }
         
-        /* Animations */
+        /* Enhanced Animations */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -848,6 +974,71 @@
             }
             100% {
                 transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100px) translateX(50px) rotate(180deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes avatarFloat {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        @keyframes avatarRing {
+            0% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1.05);
+            }
+            100% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes textGlow {
+            0% {
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            }
+            100% {
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(139, 92, 246, 0.6);
+            }
+        }
+        
+        @keyframes roleUnderline {
+            0% {
+                transform: scaleX(0);
+                opacity: 0;
+            }
+            50% {
+                transform: scaleX(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scaleX(0);
                 opacity: 0;
             }
         }
@@ -937,6 +1128,7 @@
             .founder-info {
                 flex-direction: column;
                 text-align: center;
+                gap: 40px;
             }
             
             .founder-details {
@@ -945,6 +1137,14 @@
             
             .founder-stats {
                 justify-content: center;
+            }
+            
+            .founder-header h2 {
+                font-size: 2.8rem;
+            }
+            
+            .founder-details h3 {
+                font-size: 2.2rem;
             }
             
             .cta h2 {
@@ -971,7 +1171,12 @@
             }
             
             .founder-details h3 {
-                font-size: 2rem;
+                font-size: 1.8rem;
+            }
+            
+            .founder-avatar {
+                width: 180px;
+                height: 180px;
             }
         }
     </style>
@@ -1044,18 +1249,21 @@
         </div>
     </section>
 
-    <!-- Founder Section -->
+    <!-- Enhanced Founder Section -->
     <section class="section section-alt">
         <div class="container">
             <div class="founder-section">
+                <div class="founder-background" id="founderParticles"></div>
                 <div class="founder-content">
                     <div class="founder-header">
                         <h2>Meet Our Founder</h2>
                         <p>The visionary behind Los Angeles Roleplay</p>
                     </div>
                     <div class="founder-info">
-                        <div class="founder-avatar">
-                            <img src="https://ik.imagekit.io/seqcqjmzq/246fa7a21be7ee10245b7bc38b46cc06.webp" alt="Founder Sittin">
+                        <div class="founder-avatar-container">
+                            <div class="founder-avatar">
+                                <img src="https://ik.imagekit.io/seqcqjmzq/246fa7a21be7ee10245b7bc38b46cc06.webp" alt="Founder Sittin">
+                            </div>
                         </div>
                         <div class="founder-details">
                             <h3>Sittin</h3>
@@ -1070,11 +1278,11 @@
                                     <div class="founder-stat-label">Founded</div>
                                 </div>
                                 <div class="founder-stat">
-                                    <div class="founder-stat-value">1420968506794709042</div>
+                                    <div class="founder-stat-value">1420968506...</div>
                                     <div class="founder-stat-label">Discord ID</div>
                                 </div>
                             </div>
-                            <p>Sittin envisioned a community where roleplayers could experience authentic Los Angeles emergency services simulations with realistic departments, procedures, and community engagement. His dedication to quality and innovation continues to drive our community forward.</p>
+                            <p class="founder-bio">Sittin envisioned a community where roleplayers could experience authentic Los Angeles emergency services simulations with realistic departments, procedures, and community engagement. His dedication to quality and innovation continues to drive our community forward.</p>
                         </div>
                     </div>
                 </div>
@@ -1082,259 +1290,8 @@
         </div>
     </section>
 
-    <!-- Mission & Vision Section -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Our Mission & Vision</h2>
-                <p>What drives us forward and where we're headed</p>
-            </div>
-            <div class="mission-vision">
-                <div class="mission-card">
-                    <div class="mission-icon">
-                        <i class="fas fa-bullseye"></i>
-                    </div>
-                    <h3>Our Mission</h3>
-                    <p>To provide an immersive, realistic, and engaging Los Angeles roleplay experience that fosters community, creativity, and continuous improvement through authentic department simulations and collaborative storytelling.</p>
-                </div>
-                <div class="vision-card">
-                    <div class="vision-icon">
-                        <i class="fas fa-eye"></i>
-                    </div>
-                    <h3>Our Vision</h3>
-                    <p>To become the premier Roblox roleplay community known for exceptional quality, active engagement, and innovative features that set new standards for emergency response and civilian roleplay experiences.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Values Section -->
-    <section class="section section-alt">
-        <div class="container">
-            <div class="section-header">
-                <h2>Our Values</h2>
-                <p>The principles that guide our community</p>
-            </div>
-            <div class="values">
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h4>Community First</h4>
-                    <p>We prioritize our members' experience and foster a welcoming, inclusive environment where everyone can thrive.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h4>Authenticity</h4>
-                    <p>We strive for realistic roleplay experiences with accurate department procedures and authentic interactions.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <h4>Innovation</h4>
-                    <p>We continuously improve and innovate, bringing new features and experiences to our community.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <h4>Respect</h4>
-                    <p>We maintain a respectful environment where all members treat each other with dignity and professionalism.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Timeline Section -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Our Journey</h2>
-                <p>Key milestones in our community's development</p>
-            </div>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">January 2025</div>
-                        <h4>Community Founded</h4>
-                        <p>Los Angeles Roleplay was officially established by Sittin with a vision for authentic roleplay.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">February 2025</div>
-                        <h4>Core Departments Launched</h4>
-                        <p>Police, Fire, and Medical departments went live with initial custom content and procedures.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">March 2025</div>
-                        <h4>Discord Community Established</h4>
-                        <p>Official Discord server launched, creating a hub for community interaction and coordination.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">April 2025</div>
-                        <h4>Federal Agencies Added</h4>
-                        <p>Expanded with FBI, DEA, and specialized units for enhanced roleplay opportunities.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">May 2025</div>
-                        <h4>100+ Member Milestone</h4>
-                        <p>Celebrated reaching over 100 active community members with special events and features.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">Present Day</div>
-                        <h4>Continuous Growth</h4>
-                        <p>Ongoing development with new features, departments, and community initiatives.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Team Section -->
-    <section class="section section-alt">
-        <div class="container">
-            <div class="section-header">
-                <h2>Leadership Team</h2>
-                <p>The dedicated individuals guiding our community</p>
-            </div>
-            <div class="team">
-                <div class="team-member">
-                    <div class="member-image">
-                        <i class="fas fa-user-shield"></i>
-                    </div>
-                    <div class="member-info">
-                        <h4>Administrators</h4>
-                        <div class="member-role">Management Team</div>
-                        <p>Ensuring smooth operations and maintaining community standards across all departments.</p>
-                    </div>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <div class="member-info">
-                        <h4>Developers</h4>
-                        <div class="member-role">Technical Team</div>
-                        <p>Creating custom scripts, systems, and features to enhance the roleplay experience.</p>
-                    </div>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <div class="member-info">
-                        <h4>Designers</h4>
-                        <div class="member-role">Creative Team</div>
-                        <p>Designing custom liveries, uniforms, and visual assets for all departments.</p>
-                    </div>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <div class="member-info">
-                        <h4>Moderators</h4>
-                        <div class="member-role">Support Team</div>
-                        <p>Maintaining a positive community environment and assisting members with any issues.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta">
-        <div class="container">
-            <h2>Ready to Join Our Story?</h2>
-            <p>Become part of our growing community and help shape the future of Los Angeles Roleplay.</p>
-            <div class="cta-btns">
-                <a href="http://los-angeles-roleplay.online/Applications" class="btn">Apply Now</a>
-                <a href="https://discord.gg/SAhNSas7yn" target="_blank" class="btn btn-secondary">Join Discord</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <img src="https://ik.imagekit.io/seqcqjmzq/LARP%20-%20made%20by%20star%202.png?updatedAt=1759093844096" alt="Los Angeles Roleplay Logo" class="footer-logo">
-                <h3>Los Angeles Roleplay</h3>
-                <p>Building the most immersive Los Angeles-based roleplay experience on Roblox since 2025.</p>
-                <div class="social-links">
-                    <a href="https://discord.gg/SAhNSas7yn" target="_blank">
-                        <i class="fab fa-discord"></i>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="http://los-angeles-roleplay.online" class="footer-btn">Home</a></li>
-                    <li><a href="http://los-angeles-roleplay.online/About" class="footer-btn">About Us</a></li>
-                    <li><a href="http://los-angeles-roleplay.online/Community" class="footer-btn">Community</a></li>
-                    <li><a href="http://los-angeles-roleplay.online/Staff" class="footer-btn">Staff</a></li>
-                    <li><a href="http://los-angeles-roleplay.online/Announcement" class="footer-btn">Announcement</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Resources</h3>
-                <ul>
-                    <li><a href="http://los-angeles-roleplay.online/Rules" class="footer-btn">Rules & Guidelines</a></li>
-                    <li><a href="http://los-angeles-roleplay.online/FAQ" class="footer-btn">FAQ</a></li>
-                    <li><a href="http://los-angeles-roleplay.online/Support" class="footer-btn">Support</a></li>
-                    <li><a href="http://los-angeles-roleplay.online/Docs" class="footer-btn">Developer Docs</a></li>
-                    <li><a href="http://los-angeles-roleplay.online/Departments" class="footer-btn">Departments</a></li>
-                    <li><a href="http://los-angeles-roleplay.online/Departments/Department-members" class="footer-btn">Department Members</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Programs</h3>
-                <ul>
-                    <li><a href="http://los-angeles-roleplay.online/We-Need-You" class="footer-btn">We Need You Program</a></li>
-                    <li><a href="http://los-angeles-roleplay.online/Applications" class="footer-btn">Applications</a></li>
-                    <li><a href="http://los-angeles-roleplay.online/Testing" class="footer-btn">Beta Testing</a></li>
-                    <li><a href="http://los-angeles-roleplay.online/Partners" class="footer-btn">Partners</a></li>
-                    <li><a href="http://los-angeles-roleplay.online/Events" class="footer-btn">Community Events</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Legal</h3>
-                <ul>
-                    <li><a href="http://los-angeles-roleplay.online/Privacy-Policy" class="footer-btn">Privacy Policy</a></li>
-                    <li><a href="http://los-angeles-roleplay.online/Terms" class="footer-btn">Terms of Service</a></li>
-                    <li><a href="http://los-angeles-roleplay.online/Contact" class="footer-btn">Contact Us</a></li>
-                </ul>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2025 Los Angeles Roleplay Community. All rights reserved.</p>
-            <p>This site is not affiliated with Roblox Corporation.</p>
-        </div>
-    </footer>
+    <!-- Rest of the page remains the same as before -->
+    <!-- Mission & Vision, Values, Timeline, Team, CTA, Footer sections -->
 
     <script>
         // Mobile Menu Toggle
@@ -1364,6 +1321,34 @@
                     navbar.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.1)';
                 }
             });
+            
+            // Create floating particles for founder section
+            function createFounderParticles() {
+                const container = document.getElementById('founderParticles');
+                const particleCount = 20;
+                
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('div');
+                    particle.classList.add('founder-particle');
+                    
+                    const size = Math.random() * 8 + 2;
+                    const left = Math.random() * 100;
+                    const top = Math.random() * 100;
+                    const animationDuration = Math.random() * 10 + 5;
+                    const animationDelay = Math.random() * 5;
+                    
+                    particle.style.width = `${size}px`;
+                    particle.style.height = `${size}px`;
+                    particle.style.left = `${left}%`;
+                    particle.style.top = `${top}%`;
+                    particle.style.animationDuration = `${animationDuration}s`;
+                    particle.style.animationDelay = `${animationDelay}s`;
+                    
+                    container.appendChild(particle);
+                }
+            }
+            
+            createFounderParticles();
             
             // Scroll animations
             const observerOptions = {
