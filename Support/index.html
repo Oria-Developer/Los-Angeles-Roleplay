@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - Los Angeles Roleplay</title>
+    <link rel="icon" type="image/png" href="https://ik.imagekit.io/seqcqjmzq/LARP%20-%20made%20by%20star%202.png?updatedAt=1759093844096">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #1a5fb4;
+            --secondary: #62a0ea;
+            --accent: #3584e4;
+            --light: #f6f5f4;
+            --dark: #333333;
+            --white: #ffffff;
+            --background: #f8f9fa;
+            --text: #333333;
+            --card-bg: #ffffff;
+            --border: #e0e0e0;
+            --success: #2ecc71;
+            --warning: #f39c12;
+            --error: #e74c3c;
+        }
+        
+        body {
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+            font-family: 'Open Sans', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        /* Fixed Navigation */
+        .navbar {
+            background: var(--white);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        
+        .nav-logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-logo img {
+            height: 40px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-item {
+            margin: 0 10px;
+        }
+        
+        .nav-link {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+        }
+        
+        .nav-link:hover {
+            color: var(--accent);
+        }
+        
+        .nav-link.active {
+            color: var(--accent);
+            font-weight: 600;
+        }
+        
+        .nav-btn {
+            background: var(--accent);
+            color: var(--white);
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .nav-btn:hover {
+            background: var(--primary);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 18px;
+        }
+        
+        .bar {
+            height: 2px;
+            width: 100%;
+            background-color: var(--text);
+            transition: all 0.3s ease;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 60px;
+            text-align: center;
+            background: var(--white);
+        }
+        
+        .hero-content {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            color: var(--dark);
+        }
+        
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--white);
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        
+        .btn:hover {
+            background: var(--primary);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--accent);
+            color: var(--white);
+        }
+        
+        /* Sections */
+        .section {
+            padding: 60px 0;
+            background: var(--background);
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-header h2 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .section-header p {
+            font-size: 1rem;
+            color: var(--text);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Support Options */
+        .support-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+        
+        .support-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: all 0.2s ease;
+        }
+        
+        .support-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .support-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(53, 132, 228, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--accent);
+            font-size: 1.8rem;
+        }
+        
+        .support-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary);
+        }
+        
+        .support-card p {
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            color: var(--dark);
+        }
+        
+        /* Contact Form */
+        .contact-form {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 40px;
+            border: 1px solid var(--border);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(53, 132, 228, 0.1);
+        }
+        
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: var(--accent);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .submit-btn:hover {
+            background: var(--primary);
+        }
+        
+        /* FAQ Preview */
+        .faq-preview {
+            margin-top: 60px;
+        }
+        
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .faq-preview-item {
+            background: var(--card-bg);
+            border-radius: 6px;
+            padding: 20px;
+            border: 1px solid var(--border);
+        }
+        
+        .faq-preview-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary);
+        }
+        
+        .faq-preview-item p {
+            font-size: 0.9rem;
+            color: var(--dark);
+        }
+        
+        /* Status Section */
+        .status-section {
+            margin-top: 60px;
+        }
+        
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .status-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+        
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+        }
+        
+        .status-online {
+            background: var(--success);
+        }
+        
+        .status-maintenance {
+            background: var(--warning);
+        }
+        
+        .status-offline {
+            background: var(--error);
+        }
+        
+        .status-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .status-card p {
+            font-size: 0.9rem;
+            color: var(--dark);
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 60px 0;
+        }
+        
+        .cta h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .cta p {
+            font-size: 1rem;
+            margin-bottom: 25px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-btns {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .btn-light {
+            background: var(--white);
+            color: var(--primary);
+        }
+        
+        /* Footer */
+        footer {
+            background: #1a1a2e;
+            color: var(--white);
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-section h3 {
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section ul li a {
+            color: #cccccc;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+        }
+        
+        .footer-section ul li a:hover {
+            color: var(--accent);
+        }
+        
+        .footer-logo {
+            max-width: 150px;
+            margin-bottom: 15px;
+        }
+        
+        .social-links {
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            font-size: 1.4rem;
+            color: var(--accent);
+            transition: all 0.2s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaaaaa;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: var(--card-bg);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+                padding: 15px 0;
+                z-index: 999;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-item {
+                margin: 10px 0;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .hamburger.active .bar:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active .bar:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-header h2 {
+                font-size: 1.6rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .support-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .status-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-form {
+                padding: 25px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .section-header h2 {
+                font-size: 1.4rem;
+            }
+            
+            .support-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="http://los-angeles-roleplay.online">
+                    <img src="https://ik.imagekit.io/seqcqjmzq/LARP%20-%20made%20by%20star%202.png?updatedAt=1759093844096" alt="Los Angeles Roleplay Logo">
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="http://los-angeles-roleplay.online" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="http://los-angeles-roleplay.online/About" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="http://los-angeles-roleplay.online/Departments" class="nav-link">Departments</a>
+                </li>
+                <li class="nav-item">
+                    <a href="http://los-angeles-roleplay.online/Community" class="nav-link">Community</a>
+                </li>
+                <li class="nav-item">
+                    <a href="http://los-angeles-roleplay.online/Staff" class="nav-link">Staff</a>
+                </li>
+                <li class="nav-item">
+                    <a href="http://los-angeles-roleplay.online/Rules" class="nav-link">Rules</a>
+                </li>
+                <li class="nav-item">
+                    <a href="http://los-angeles-roleplay.online/Announcement" class="nav-link">Announcements</a>
+                </li>
+                <li class="nav-item">
+                    <a href="http://los-angeles-roleplay.online/FAQ" class="nav-link">FAQ</a>
+                </li>
+                <li class="nav-item">
+                    <a href="http://los-angeles-roleplay.online/Support" class="nav-link active">Support</a>
+                </li>
+                <li class="nav-item">
+                    <a href="http://los-angeles-roleplay.online/We-Need-You" class="nav-btn">We Need You</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Support Center</h1>
+            <p>Get help with any issues or questions about Los Angeles Roleplay</p>
+            <div class="hero-btns">
+                <a href="#support-options" class="btn">Get Help</a>
+                <a href="https://discord.gg/SAhNSas7yn" target="_blank" class="btn btn-secondary">Join Discord</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Options Section -->
+    <section id="support-options" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>How Can We Help You?</h2>
+                <p>Choose the best way to get support based on your needs</p>
+            </div>
+            
+            <div class="support-options">
+                <div class="support-card">
+                    <div class="support-icon">
+                        <i class="fab fa-discord"></i>
+                    </div>
+                    <h3>Discord Support</h3>
+                    <p>Get real-time help from our community and staff members in our Discord server.</p>
+                    <a href="https://discord.gg/SAhNSas7yn" target="_blank" class="btn">Join Discord</a>
+                </div>
+                
+                <div class="support-card">
+                    <div class="support-icon">
+                        <i class="fas fa-ticket-alt"></i>
+                    </div>
+                    <h3>Submit a Ticket</h3>
+                    <p>For detailed issues that require staff attention, submit a support ticket.</p>
+                    <a href="#contact-form" class="btn">Submit Ticket</a>
+                </div>
+                
+                <div class="support-card">
+                    <div class="support-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Knowledge Base</h3>
+                    <p>Browse our FAQ and documentation for answers to common questions.</p>
+                    <a href="http://los-angeles-roleplay.online/FAQ" class="btn">View FAQ</a>
+                </div>
+            </div>
+            
+            <!-- Status Section -->
+            <div class="status-section">
+                <div class="section-header">
+                    <h2>Server Status</h2>
+                    <p>Current status of our services and platforms</p>
+                </div>
+                
+                <div class="status-grid">
+                    <div class="status-card">
+                        <h3><span class="status-indicator status-online"></span> Discord Server</h3>
+                        <p>Operational</p>
+                    </div>
+                    
+                    <div class="status-card">
+                        <h3><span class="status-indicator status-online"></span> Website</h3>
+                        <p>Operational</p>
+                    </div>
+                    
+                    <div class="status-card">
+                        <h3><span class="status-indicator status-online"></span> Roblox Server</h3>
+                        <p>Coming Soon</p>
+                    </div>
+                    
+                    <div class="status-card">
+                        <h3><span class="status-indicator status-online"></span> Support System</h3>
+                        <p>Operational</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="section" style="background: var(--white);">
+        <div class="container">
+            <div class="section-header">
+                <h2 id="contact-form">Submit a Support Ticket</h2>
+                <p>Fill out the form below and our support team will get back to you as soon as possible</p>
+            </div>
+            
+            <div class="contact-form">
+                <form id="support-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Your Name</label>
+                            <input type="text" id="name" class="form-input" placeholder="Enter your name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" id="email" class="form-input" placeholder="Enter your email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject" class="form-label">Subject</label>
+                        <input type="text" id="subject" class="form-input" placeholder="Brief description of your issue" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="category" class="form-label">Issue Category</label>
+                        <select id="category" class="form-select" required>
+                            <option value="">Select a category</option>
+                            <option value="technical">Technical Issue</option>
+                            <option value="account">Account Problem</option>
+                            <option value="report">Player Report</option>
+                            <option value="appeal">Ban Appeal</option>
+                            <option value="suggestion">Suggestion</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea id="message" class="form-textarea" placeholder="Please describe your issue in detail..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Submit Support Ticket</button>
+                </form>
+            </div>
+            
+            <!-- FAQ Preview -->
+            <div class="faq-preview">
+                <div class="section-header">
+                    <h2>Common Questions</h2>
+                    <p>Quick answers to frequently asked questions</p>
+                </div>
+                
+                <div class="faq-grid">
+                    <div class="faq-preview-item">
+                        <h4>How do I join the Discord server?</h4>
+                        <p>Click the "Join Discord" button on our website and complete the verification process to access all channels.</p>
+                    </div>
+                    
+                    <div class="faq-preview-item">
+                        <h4>What is the response time for support tickets?</h4>
+                        <p>We aim to respond to all support tickets within 24-48 hours. Discord support is typically faster.</p>
+                    </div>
+                    
+                    <div class="faq-preview-item">
+                        <h4>How do I appeal a ban?</h4>
+                        <p>Submit a support ticket with the "Ban Appeal" category and include all relevant details about your situation.</p>
+                    </div>
+                    
+                    <div class="faq-preview-item">
+                        <h4>Where can I find the server rules?</h4>
+                        <p>Our complete rules are available on the Rules page of our website and in the Discord server.</p>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="http://los-angeles-roleplay.online/FAQ" class="btn">View Full FAQ</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Need Immediate Help?</h2>
+            <p>Join our Discord server for real-time support from our community and staff members.</p>
+            <div class="cta-btns">
+                <a href="https://discord.gg/SAhNSas7yn" target="_blank" class="btn btn-light">Join Discord Now</a>
+                <a href="http://los-angeles-roleplay.online/Community" class="btn btn-secondary">Our Community</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <img src="https://ik.imagekit.io/seqcqjmzq/LARP%20-%20made%20by%20star%202.png?updatedAt=1759093844096" alt="Los Angeles Roleplay Logo" class="footer-logo">
+                <h3>Los Angeles Roleplay</h3>
+                <p>Building the most immersive Los Angeles-based roleplay experience on Roblox since 2025.</p>
+                <div class="social-links">
+                    <a href="https://discord.gg/SAhNSas7yn" target="_blank">
+                        <i class="fab fa-discord"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="http://los-angeles-roleplay.online" class="footer-btn">Home</a></li>
+                    <li><a href="http://los-angeles-roleplay.online/About" class="footer-btn">About Us</a></li>
+                    <li><a href="http://los-angeles-roleplay.online/Community" class="footer-btn">Community</a></li>
+                    <li><a href="http://los-angeles-roleplay.online/Staff" class="footer-btn">Staff</a></li>
+                    <li><a href="http://los-angeles-roleplay.online/Support" class="footer-btn">Support</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="http://los-angeles-roleplay.online/Rules" class="footer-btn">Rules & Guidelines</a></li>
+                    <li><a href="http://los-angeles-roleplay.online/FAQ" class="footer-btn">FAQ</a></li>
+                    <li><a href="http://los-angeles-roleplay.online/Support" class="footer-btn">Support</a></li>
+                    <li><a href="http://los-angeles-roleplay.online/Departments" class="footer-btn">Departments</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="http://los-angeles-roleplay.online/Privacy-Policy" class="footer-btn">Privacy Policy</a></li>
+                    <li><a href="http://los-angeles-roleplay.online/Terms" class="footer-btn">Terms of Service</a></li>
+                    <li><a href="http://los-angeles-roleplay.online/Contact" class="footer-btn">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Los Angeles Roleplay Community. All rights reserved.</p>
+            <p>This site is not affiliated with Roblox Corporation.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+            
+            // Close menu when clicking on a link
+            document.querySelectorAll('.nav-link, .nav-btn').forEach(n => n.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }));
+            
+            // Support Form Submission
+            const supportForm = document.getElementById('support-form');
+            
+            if (supportForm) {
+                supportForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form values
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const subject = document.getElementById('subject').value;
+                    const category = document.getElementById('category').value;
+                    const message = document.getElementById('message').value;
+                    
+                    // In a real implementation, you would send this data to a server
+                    // For now, we'll just show an alert
+                    alert(`Thank you, ${name}! Your support ticket has been submitted. We'll respond to ${email} as soon as possible.`);
+                    
+                    // Reset form
+                    supportForm.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
