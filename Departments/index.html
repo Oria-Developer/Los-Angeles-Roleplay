@@ -32,6 +32,27 @@
             --state: #3498db;
             --local: #2ecc71;
             --special: #e67e22;
+            
+            /* Department Colors */
+            --dhs-blue: #1c3d6c;
+            --dhs-silver: #c0c0c0;
+            --fbi-blue: #1f3a93;
+            --bea-black: #1a1a1a;
+            --bea-darkblue: #2c3e50;
+            --pr-green: #27ae60;
+            --pr-nature: #2ecc71;
+            --lapd-blue: #1e3a8a;
+            --lapd-red: #e74c3c;
+            --chp-darkblue: #1e3a5f;
+            --laso-tan: #d2b48c;
+            --laso-darkgreen: #2c5530;
+            --lafd-red: #c0392b;
+            --lacd-blue: #2980b9;
+            --lacd-silver: #bdc3c7;
+            --las-black: #2c3e50;
+            --las-white: #ecf0f1;
+            --oversee-gold: #d4af37;
+            --oversee-white: #ffffff;
         }
         
         body {
@@ -312,6 +333,58 @@
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
         
+        /* Department Themes */
+        .department-dhs .department-header {
+            background: linear-gradient(135deg, var(--dhs-blue) 0%, var(--dhs-silver) 100%);
+            color: white;
+        }
+        
+        .department-fbi .department-header {
+            background: var(--fbi-blue);
+            color: white;
+        }
+        
+        .department-bea .department-header {
+            background: linear-gradient(135deg, var(--bea-black) 0%, var(--bea-darkblue) 100%);
+            color: white;
+        }
+        
+        .department-pr .department-header {
+            background: linear-gradient(135deg, var(--pr-green) 0%, var(--pr-nature) 100%);
+            color: white;
+        }
+        
+        .department-lapd .department-header {
+            background: linear-gradient(135deg, var(--lapd-blue) 0%, var(--lapd-red) 50%, white 100%);
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+        }
+        
+        .department-chp .department-header {
+            background: var(--chp-darkblue);
+            color: white;
+        }
+        
+        .department-laso .department-header {
+            background: linear-gradient(135deg, var(--laso-tan) 0%, var(--laso-darkgreen) 100%);
+            color: white;
+        }
+        
+        .department-lafd .department-header {
+            background: var(--lafd-red);
+            color: white;
+        }
+        
+        .department-lacd .department-header {
+            background: linear-gradient(135deg, var(--lacd-blue) 0%, var(--lacd-silver) 100%);
+            color: white;
+        }
+        
+        .department-las .department-header {
+            background: linear-gradient(135deg, var(--las-black) 0%, var(--las-white) 100%);
+            color: white;
+        }
+        
         .department-header {
             padding: 25px;
             text-align: center;
@@ -324,6 +397,7 @@
             margin-bottom: 15px;
             object-fit: contain;
             transition: transform 0.3s ease;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
         }
         
         .department-card:hover .department-logo {
@@ -334,12 +408,10 @@
             font-size: 1.4rem;
             margin-bottom: 5px;
             font-family: 'Montserrat', sans-serif;
-            color: var(--primary);
         }
         
         .department-abbr {
             font-size: 1rem;
-            color: var(--accent);
             font-weight: 600;
         }
         
@@ -373,9 +445,60 @@
             padding: 25px;
         }
         
+        .department-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(0,0,0,0.03);
+            border-radius: 6px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary);
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
         .department-description {
             margin-bottom: 20px;
             font-size: 0.95rem;
+        }
+        
+        .department-specialties {
+            margin-bottom: 20px;
+        }
+        
+        .department-specialties h5 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary);
+        }
+        
+        .specialty-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .specialty {
+            background: rgba(53, 132, 228, 0.1);
+            color: var(--accent);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
         }
         
         .department-discord {
@@ -460,7 +583,7 @@
         
         /* Overseeing Department */
         .overseeing-department {
-            background: var(--white);
+            background: linear-gradient(135deg, var(--oversee-gold) 0%, var(--oversee-white) 100%);
             border-radius: 8px;
             padding: 40px;
             margin-top: 40px;
@@ -470,6 +593,7 @@
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInUp 0.6s ease 1.1s forwards;
+            color: #333;
         }
         
         .overseeing-logo {
@@ -482,7 +606,7 @@
             font-size: 1.8rem;
             margin-bottom: 15px;
             font-family: 'Montserrat', sans-serif;
-            color: var(--primary);
+            color: #333;
         }
         
         .overseeing-department p {
@@ -649,6 +773,11 @@
             .overseeing-department {
                 padding: 25px;
             }
+            
+            .department-stats {
+                flex-direction: column;
+                gap: 10px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -731,7 +860,7 @@
             
             <div class="departments-grid">
                 <!-- DHS -->
-                <div class="department-card">
+                <div class="department-card department-dhs">
                     <div class="department-header">
                         <img src="https://ik.imagekit.io/tycncf0zq0/download%20(13).png" alt="DHS Logo" class="department-logo">
                         <h3 class="department-name">Department of Homeland Security</h3>
@@ -739,11 +868,34 @@
                         <div class="department-type type-federal">Federal Agency</div>
                     </div>
                     <div class="department-content">
+                        <div class="department-stats">
+                            <div class="stat">
+                                <div class="stat-value">42</div>
+                                <div class="stat-label">Active Agents</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">15</div>
+                                <div class="stat-label">Operations</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">93%</div>
+                                <div class="stat-label">Activity Rate</div>
+                            </div>
+                        </div>
                         <p class="department-description">
-                            The Department of Homeland Security is a federal agency responsible for protecting the United States from various threats, 
-                            both domestic and international. Our agents work to prevent terrorism, secure borders, enforce immigration laws, 
-                            and respond to natural disasters and other emergencies.
+                            The Department of Homeland Security in our roleplay focuses on counter-terrorism, border security, 
+                            and protecting critical infrastructure. Our agents handle high-risk situations and coordinate 
+                            with other agencies to ensure national security within Los Angeles.
                         </p>
+                        <div class="department-specialties">
+                            <h5>Specializations</h5>
+                            <div class="specialty-list">
+                                <span class="specialty">Counter-Terrorism</span>
+                                <span class="specialty">Border Security</span>
+                                <span class="specialty">Critical Infrastructure</span>
+                                <span class="specialty">Federal Investigations</span>
+                            </div>
+                        </div>
                         <a href="https://discord.gg/uRNz37jz3b" target="_blank" class="department-discord">
                             <i class="fab fa-discord"></i> Join DHS Discord
                         </a>
@@ -763,7 +915,7 @@
                 </div>
                 
                 <!-- FBI -->
-                <div class="department-card">
+                <div class="department-card department-fbi">
                     <div class="department-header">
                         <img src="https://ik.imagekit.io/tycncf0zq0/download%20(3).png" alt="FBI Logo" class="department-logo">
                         <h3 class="department-name">Federal Bureau of Investigation</h3>
@@ -771,11 +923,34 @@
                         <div class="department-type type-federal">Federal Agency</div>
                     </div>
                     <div class="department-content">
+                        <div class="department-stats">
+                            <div class="stat">
+                                <div class="stat-value">38</div>
+                                <div class="stat-label">Active Agents</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">22</div>
+                                <div class="stat-label">Active Cases</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">88%</div>
+                                <div class="stat-label">Case Success</div>
+                            </div>
+                        </div>
                         <p class="department-description">
-                            The FBI is the principal federal law enforcement agency in the United States. Our agents investigate 
-                            serious federal crimes including terrorism, cybercrime, organized crime, public corruption, civil rights violations, 
-                            and major white-collar crimes. We work closely with local and state law enforcement agencies.
+                            Our FBI division handles complex federal investigations including organized crime, 
+                            cybercrime, and public corruption. Special Agents work closely with local law enforcement 
+                            to solve major cases that cross jurisdictional boundaries.
                         </p>
+                        <div class="department-specialties">
+                            <h5>Specializations</h5>
+                            <div class="specialty-list">
+                                <span class="specialty">Organized Crime</span>
+                                <span class="specialty">Cyber Investigations</span>
+                                <span class="specialty">Public Corruption</span>
+                                <span class="specialty">Hostage Rescue</span>
+                            </div>
+                        </div>
                         <a href="https://discord.gg/86KpWtzceU" target="_blank" class="department-discord">
                             <i class="fab fa-discord"></i> Join FBI Discord
                         </a>
@@ -795,7 +970,7 @@
                 </div>
                 
                 <!-- BEA -->
-                <div class="department-card">
+                <div class="department-card department-bea">
                     <div class="department-header">
                         <img src="https://ik.imagekit.io/tycncf0zq0/download%20(2).png" alt="BEA Logo" class="department-logo">
                         <h3 class="department-name">Bail Enforcement Agency</h3>
@@ -803,11 +978,34 @@
                         <div class="department-type type-state">State Agency</div>
                     </div>
                     <div class="department-content">
+                        <div class="department-stats">
+                            <div class="stat">
+                                <div class="stat-value">28</div>
+                                <div class="stat-label">Enforcement Agents</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">47</div>
+                                <div class="stat-label">Fugitives Apprehended</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">96%</div>
+                                <div class="stat-label">Success Rate</div>
+                            </div>
+                        </div>
                         <p class="department-description">
-                            The Bail Enforcement Agency is responsible for tracking down and apprehending individuals who have 
-                            skipped bail or failed to appear in court. Our agents work to ensure that defendants comply with 
-                            court orders and return to face justice. We operate with precision and within legal boundaries.
+                            Our Bail Enforcement Agents track down and apprehend individuals who have skipped bail. 
+                            Working within legal boundaries, they ensure defendants return to face justice while 
+                            maintaining public safety through precise operations.
                         </p>
+                        <div class="department-specialties">
+                            <h5>Specializations</h5>
+                            <div class="specialty-list">
+                                <span class="specialty">Fugitive Recovery</span>
+                                <span class="specialty">Surveillance</span>
+                                <span class="specialty">Apprehension</span>
+                                <span class="specialty">Bail Enforcement</span>
+                            </div>
+                        </div>
                         <a href="https://discord.gg/dHV2XThScn" target="_blank" class="department-discord">
                             <i class="fab fa-discord"></i> Join BEA Discord
                         </a>
@@ -827,7 +1025,7 @@
                 </div>
                 
                 <!-- PR -->
-                <div class="department-card">
+                <div class="department-card department-pr">
                     <div class="department-header">
                         <img src="https://ik.imagekit.io/tycncf0zq0/download%20(1).png" alt="PR Logo" class="department-logo">
                         <h3 class="department-name">Park Rangers</h3>
@@ -835,11 +1033,34 @@
                         <div class="department-type type-local">Local Agency</div>
                     </div>
                     <div class="department-content">
+                        <div class="department-stats">
+                            <div class="stat">
+                                <div class="stat-value">24</div>
+                                <div class="stat-label">Active Rangers</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">12</div>
+                                <div class="stat-label">Parks Protected</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">18</div>
+                                <div class="stat-label">Rescues This Month</div>
+                            </div>
+                        </div>
                         <p class="department-description">
-                            Park Rangers are responsible for protecting and managing Los Angeles' extensive park systems. 
-                            Our duties include law enforcement within park boundaries, conservation efforts, visitor assistance, 
-                            search and rescue operations, and educational programs about natural resources and wildlife.
+                            Our Park Rangers protect and manage Los Angeles' extensive park systems, ensuring both visitor safety 
+                            and environmental conservation. They handle everything from lost hikers to wildlife management and 
+                            environmental education programs.
                         </p>
+                        <div class="department-specialties">
+                            <h5>Specializations</h5>
+                            <div class="specialty-list">
+                                <span class="specialty">Search & Rescue</span>
+                                <span class="specialty">Wildlife Management</span>
+                                <span class="specialty">Environmental Protection</span>
+                                <span class="specialty">Visitor Safety</span>
+                            </div>
+                        </div>
                         <a href="https://discord.gg/4X7GpTCk9Q" target="_blank" class="department-discord">
                             <i class="fab fa-discord"></i> Join PR Discord
                         </a>
@@ -859,7 +1080,7 @@
                 </div>
                 
                 <!-- LAPD -->
-                <div class="department-card">
+                <div class="department-card department-lapd">
                     <div class="department-header">
                         <img src="https://ik.imagekit.io/tycncf0zq0/download%20(10).png" alt="LAPD Logo" class="department-logo">
                         <h3 class="department-name">Los Angeles Police Department</h3>
@@ -867,11 +1088,34 @@
                         <div class="department-type type-local">Local Agency</div>
                     </div>
                     <div class="department-content">
+                        <div class="department-stats">
+                            <div class="stat">
+                                <div class="stat-value">67</div>
+                                <div class="stat-label">Active Officers</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">14</div>
+                                <div class="stat-label">Divisions</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">92%</div>
+                                <div class="stat-label">Response Rate</div>
+                            </div>
+                        </div>
                         <p class="department-description">
-                            The LAPD is the primary law enforcement agency for the City of Los Angeles. With over 9,000 officers 
-                            and 3,000 civilian staff, we serve and protect approximately 4 million residents across 473 square miles. 
-                            Our mission is to safeguard lives and property, reduce crime, and enhance public safety through community partnerships.
+                            As the primary law enforcement agency for Los Angeles, our LAPD officers patrol neighborhoods, 
+                            respond to emergencies, and build community partnerships. With specialized units including SWAT, 
+                            K-9, and detectives, we maintain public safety across the city.
                         </p>
+                        <div class="department-specialties">
+                            <h5>Specializations</h5>
+                            <div class="specialty-list">
+                                <span class="specialty">Patrol Operations</span>
+                                <span class="specialty">Criminal Investigations</span>
+                                <span class="specialty">Community Policing</span>
+                                <span class="specialty">SWAT Operations</span>
+                            </div>
+                        </div>
                         <a href="https://discord.gg/z6NppzQuHR" target="_blank" class="department-discord">
                             <i class="fab fa-discord"></i> Join LAPD Discord
                         </a>
@@ -891,7 +1135,7 @@
                 </div>
                 
                 <!-- CHP -->
-                <div class="department-card">
+                <div class="department-card department-chp">
                     <div class="department-header">
                         <img src="https://ik.imagekit.io/tycncf0zq0/download.png" alt="CHP Logo" class="department-logo">
                         <h3 class="department-name">California Highway Patrol</h3>
@@ -899,12 +1143,34 @@
                         <div class="department-type type-state">State Agency</div>
                     </div>
                     <div class="department-content">
+                        <div class="department-stats">
+                            <div class="stat">
+                                <div class="stat-value">35</div>
+                                <div class="stat-label">Active Officers</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">128</div>
+                                <div class="stat-label">Miles Patrolled</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">45</div>
+                                <div class="stat-label">Accidents Responded</div>
+                            </div>
+                        </div>
                         <p class="department-description">
-                            The California Highway Patrol is responsible for ensuring the safety, service, and security 
-                            of California's roadways. Our officers patrol state highways, enforce traffic laws, investigate 
-                            accidents, and provide assistance to motorists. We work to reduce traffic fatalities and injuries 
-                            through education and enforcement.
+                            Our CHP officers ensure the safety of California's roadways through traffic enforcement, 
+                            accident investigation, and motorist assistance. They patrol highways, enforce traffic laws, 
+                            and work to reduce traffic-related incidents through education and enforcement.
                         </p>
+                        <div class="department-specialties">
+                            <h5>Specializations</h5>
+                            <div class="specialty-list">
+                                <span class="specialty">Traffic Enforcement</span>
+                                <span class="specialty">Accident Investigation</span>
+                                <span class="specialty">Motorist Assistance</span>
+                                <span class="specialty">Commercial Enforcement</span>
+                            </div>
+                        </div>
                         <a href="https://discord.gg/UR6PGJUtD4" target="_blank" class="department-discord">
                             <i class="fab fa-discord"></i> Join CHP Discord
                         </a>
@@ -924,7 +1190,7 @@
                 </div>
                 
                 <!-- LASO -->
-                <div class="department-card">
+                <div class="department-card department-laso">
                     <div class="department-header">
                         <img src="https://ik.imagekit.io/tycncf0zq0/download%20(15).png" alt="LASO Logo" class="department-logo">
                         <h3 class="department-name">Los Angeles Sheriff's Department</h3>
@@ -932,11 +1198,34 @@
                         <div class="department-type type-local">Local Agency</div>
                     </div>
                     <div class="department-content">
+                        <div class="department-stats">
+                            <div class="stat">
+                                <div class="stat-value">52</div>
+                                <div class="stat-label">Deputies</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">8</div>
+                                <div class="stat-label">Jails Managed</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">24/7</div>
+                                <div class="stat-label">Court Services</div>
+                            </div>
+                        </div>
                         <p class="department-description">
-                            The Los Angeles Sheriff's Department provides law enforcement services to unincorporated areas 
-                            of Los Angeles County and contract cities. We operate the county jail system, provide court services, 
-                            and offer specialized units including SWAT, K-9, and air support. Our mission is to serve with integrity and professionalism.
+                            Our Sheriff's Department provides law enforcement to unincorporated areas and contract cities, 
+                            operates the county jail system, and provides court services. Specialized units including SWAT, 
+                            K-9, and air support ensure comprehensive public safety coverage.
                         </p>
+                        <div class="department-specialties">
+                            <h5>Specializations</h5>
+                            <div class="specialty-list">
+                                <span class="specialty">Jail Operations</span>
+                                <span class="specialty">Court Security</span>
+                                <span class="specialty">Rural Patrol</span>
+                                <span class="specialty">Special Operations</span>
+                            </div>
+                        </div>
                         <a href="https://discord.gg/kUvJ47qC7w" target="_blank" class="department-discord">
                             <i class="fab fa-discord"></i> Join LASO Discord
                         </a>
@@ -956,7 +1245,7 @@
                 </div>
                 
                 <!-- LAFD -->
-                <div class="department-card">
+                <div class="department-card department-lafd">
                     <div class="department-header">
                         <img src="https://ik.imagekit.io/tycncf0zq0/download%20(14).png" alt="LAFD Logo" class="department-logo">
                         <h3 class="department-name">Los Angeles Fire Department</h3>
@@ -964,11 +1253,34 @@
                         <div class="department-type type-local">Local Agency</div>
                     </div>
                     <div class="department-content">
+                        <div class="department-stats">
+                            <div class="stat">
+                                <div class="stat-value">41</div>
+                                <div class="stat-label">Firefighters</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">18</div>
+                                <div class="stat-label">Fire Stations</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">127</div>
+                                <div class="stat-label">Calls This Week</div>
+                            </div>
+                        </div>
                         <p class="department-description">
-                            The Los Angeles Fire Department provides fire suppression, emergency medical services, 
-                            technical rescue, hazardous materials response, and fire prevention services to the City of Los Angeles. 
-                            With over 3,500 uniformed personnel, we respond to over 500,000 emergencies annually, protecting life, property, and the environment.
+                            Our Fire Department provides fire suppression, emergency medical services, technical rescue, 
+                            and hazardous materials response. Firefighters work 24/7 to protect life, property, and the 
+                            environment from fires and other emergencies.
                         </p>
+                        <div class="department-specialties">
+                            <h5>Specializations</h5>
+                            <div class="specialty-list">
+                                <span class="specialty">Fire Suppression</span>
+                                <span class="specialty">Emergency Medical</span>
+                                <span class="specialty">Technical Rescue</span>
+                                <span class="specialty">Hazmat Response</span>
+                            </div>
+                        </div>
                         <a href="https://discord.gg/kyXn4knFVe" target="_blank" class="department-discord">
                             <i class="fab fa-discord"></i> Join LAFD Discord
                         </a>
@@ -988,7 +1300,7 @@
                 </div>
                 
                 <!-- LACD -->
-                <div class="department-card">
+                <div class="department-card department-lacd">
                     <div class="department-header">
                         <img src="https://ik.imagekit.io/tycncf0zq0/download%20(9).png?updatedAt=1763875213513" alt="LACD Logo" class="department-logo">
                         <h3 class="department-name">Los Angeles Emergency Communications</h3>
@@ -996,11 +1308,34 @@
                         <div class="department-type type-local">Local Agency</div>
                     </div>
                     <div class="department-content">
+                        <div class="department-stats">
+                            <div class="stat">
+                                <div class="stat-value">29</div>
+                                <div class="stat-label">Dispatchers</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">384</div>
+                                <div class="stat-label">Calls Handled Daily</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">98%</div>
+                                <div class="stat-label">Accuracy Rate</div>
+                            </div>
+                        </div>
                         <p class="department-description">
-                            The Los Angeles Emergency Communications Department is responsible for handling all emergency and non-emergency calls, 
-                            dispatching appropriate resources, and coordinating communications between various emergency services. 
-                            Our dispatchers are trained to handle high-stress situations and provide critical support to first responders.
+                            Our Emergency Communications Department handles all emergency and non-emergency calls, 
+                            dispatching appropriate resources and coordinating communications between emergency services. 
+                            Dispatchers are trained to handle high-stress situations and provide critical support.
                         </p>
+                        <div class="department-specialties">
+                            <h5>Specializations</h5>
+                            <div class="specialty-list">
+                                <span class="specialty">Emergency Dispatch</span>
+                                <span class="specialty">Radio Communication</span>
+                                <span class="specialty">Resource Coordination</span>
+                                <span class="specialty">Crisis Management</span>
+                            </div>
+                        </div>
                         <a href="https://discord.gg/Nr7NQhN8yD" target="_blank" class="department-discord">
                             <i class="fab fa-discord"></i> Join LACD Discord
                         </a>
@@ -1020,7 +1355,7 @@
                 </div>
                 
                 <!-- LAS -->
-                <div class="department-card">
+                <div class="department-card department-las">
                     <div class="department-header">
                         <img src="https://ik.imagekit.io/tycncf0zq0/Los%20Angeles%20Secuirty.png" alt="LAS Logo" class="department-logo">
                         <h3 class="department-name">Los Angeles Security</h3>
@@ -1028,12 +1363,34 @@
                         <div class="department-type type-special">Special Agency</div>
                     </div>
                     <div class="department-content">
+                        <div class="department-stats">
+                            <div class="stat">
+                                <div class="stat-value">33</div>
+                                <div class="stat-label">Security Officers</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">27</div>
+                                <div class="stat-label">Protected Locations</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">100%</div>
+                                <div class="stat-label">Incident Prevention</div>
+                            </div>
+                        </div>
                         <p class="department-description">
-                            Los Angeles Security provides specialized protective services for critical infrastructure, 
-                            government facilities, and high-profile events. Our highly trained personnel work to prevent 
-                            security breaches, conduct threat assessments, and ensure the safety of important assets and personnel 
-                            throughout the Los Angeles area.
+                            Los Angeles Security is a separate division of law enforcement that guards and protects 
+                            critical infrastructure including gas stations, courts, banks, and government facilities. 
+                            Our officers conduct threat assessments and prevent security breaches throughout Los Angeles.
                         </p>
+                        <div class="department-specialties">
+                            <h5>Specializations</h5>
+                            <div class="specialty-list">
+                                <span class="specialty">Asset Protection</span>
+                                <span class="specialty">Facility Security</span>
+                                <span class="specialty">Threat Assessment</span>
+                                <span class="specialty">Access Control</span>
+                            </div>
+                        </div>
                         <a href="https://discord.gg/xZ4ZRcGHDX" target="_blank" class="department-discord">
                             <i class="fab fa-discord"></i> Join LAS Discord
                         </a>
