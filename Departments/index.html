@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Departments - Los Angeles Roleplay</title>
+    <link rel="icon" type="image/png" href="https://ik.imagekit.io/seqcqjmzq/LARP%20-%20made%20by%20star%202.png?updatedAt=1759093844096">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #1a5fb4;
+            --secondary: #62a0ea;
+            --accent: #3584e4;
+            --light: #f6f5f4;
+            --dark: #333333;
+            --white: #ffffff;
+            --background: #f8f9fa;
+            --text: #333333;
+            --card-bg: #ffffff;
+            --border: #e0e0e0;
+            --success: #2ecc71;
+            --warning: #f39c12;
+            --error: #e74c3c;
+        }
+        
+        body {
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+            font-family: 'Open Sans', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        /* Fixed Navigation */
+        .navbar {
+            background: var(--white);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        
+        .nav-logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-logo img {
+            height: 40px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-item {
+            margin: 0 10px;
+        }
+        
+        .nav-link {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+        }
+        
+        .nav-link:hover {
+            color: var(--accent);
+        }
+        
+        .nav-link.active {
+            color: var(--accent);
+            font-weight: 600;
+        }
+        
+        .nav-btn {
+            background: var(--accent);
+            color: var(--white);
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .nav-btn:hover {
+            background: var(--primary);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 18px;
+        }
+        
+        .bar {
+            height: 2px;
+            width: 100%;
+            background-color: var(--text);
+            transition: all 0.3s ease;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 60px;
+            text-align: center;
+            background: var(--white);
+        }
+        
+        .hero-content {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            color: var(--dark);
+        }
+        
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--white);
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        
+        .btn:hover {
+            background: var(--primary);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--accent);
+            color: var(--white);
+        }
+        
+        /* Sections */
+        .section {
+            padding: 60px 0;
+            background: var(--background);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-header h2 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .section-header p {
+            font-size: 1rem;
+            color: var(--text);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Department Grid */
+        .departments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .department-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .department-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .department-header {
+            padding: 25px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .department-logo {
+            height: 80px;
+            margin-bottom: 15px;
+        }
+        
+        .department-name {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary);
+        }
+        
+        .department-abbr {
+            font-size: 1rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+        
+        .department-content {
+            padding: 25px;
+        }
+        
+        .department-description {
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .department-leadership {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px dashed var(--border);
+        }
+        
+        .department-leadership h4 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary);
+        }
+        
+        .leader {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .leader-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-right: 12px;
+        }
+        
+        .leader-info {
+            flex: 1;
+        }
+        
+        .leader-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        .leader-role {
+            font-size: 0.85rem;
+            color: #666;
+        }
+        
+        /* Overseeing Department */
+        .overseeing-department {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 40px;
+            margin-top: 40px;
+            border: 1px solid var(--border);
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .overseeing-logo {
+            height: 100px;
+            margin-bottom: 20px;
+        }
+        
+        .overseeing-department h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary);
+        }
+        
+        .overseeing-department p {
+            max-width: 700px;
+            margin: 0 auto 25px;
+        }
+        
+        /* Footer */
+        footer {
+            background: #1a1a2e;
+            color: var(--white);
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-section h3 {
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section ul li a {
+            color: #cccccc;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+        }
+        
+        .footer-section ul li a:hover {
+            color: var(--accent);
+        }
+        
+        .footer-logo {
+            max-width: 150px;
+            margin-bottom: 15px;
+        }
+        
+        .social-links {
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            font-size: 1.4rem;
+            color: var(--accent);
+            transition: all 0.2s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaaaaa;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: var(--card-bg);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+                padding: 15px 0;
+                z-index: 999;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-item {
+                margin: 10px 0;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .hamburger.active .bar:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active .bar:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-header h2 {
+                font-size: 1.6rem;
+            }
+            
+            .departments-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .overseeing-department {
+                padding: 25px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .section-header h2 {
+                font-size: 1.4rem;
+            }
+            
+            .department-header {
+                padding: 20px;
+            }
+            
+            .department-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="http://los-angeles-roleplay.online">
+                    <img src="https://ik.imagekit.io/seqcqjmzq/LARP%20-%20made%20by%20star%202.png?updatedAt=1759093844096" alt="Los Angeles Roleplay Logo">
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="http://los-angeles-roleplay.online" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="http://los-angeles-roleplay.online/About" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="http://los-angeles-roleplay.online/Departments" class="nav-link active">Departments</a>
+                </li>
+                <li class="nav-item">
+                    <a href="http://los-angeles-roleplay.online/Community" class="nav-link">Community</a>
+                </li>
+                <li class="nav-item">
+                    <a href="http://los-angeles-roleplay.online/We-Need-You" class="nav-btn">We Need You</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Our Departments</h1>
+            <p>Explore the various law enforcement and emergency service departments that maintain order in Los Angeles Roleplay</p>
+            <div class="hero-btns">
+                <a href="#departments" class="btn">View Departments</a>
+                <a href="http://los-angeles-roleplay.online/We-Need-You" class="btn btn-secondary">Join a Department</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Departments Section -->
+    <section id="departments" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Law Enforcement & Emergency Services</h2>
+                <p>Each department plays a vital role in maintaining public safety and order in our community</p>
+            </div>
+            
+            <div class="departments-grid">
+                <!-- DHS -->
+                <div class="department-card">
+                    <div class="department-header">
+                        <img src="https://ik.imagekit.io/tycncf0zq0/download%20(13).png" alt="DHS Logo" class="department-logo">
+                        <h3 class="department-name">Department of Homeland Security</h3>
+                        <div class="department-abbr">DHS</div>
+                    </div>
+                    <div class="department-content">
+                        <p class="department-description">
+                            The Department of Homeland Security is responsible for protecting the United States from various threats, 
+                            both domestic and international. Our agents work to prevent terrorism, secure borders, enforce immigration laws, 
+                            and respond to natural disasters and other emergencies.
+                        </p>
+                        <div class="department-leadership">
+                            <h4>Department Leadership</h4>
+                            <div class="leader">
+                                <div class="leader-avatar">JS</div>
+                                <div class="leader-info">
+                                    <div class="leader-name">John Smith</div>
+                                    <div class="leader-role">Secretary of Homeland Security</div>
+                                </div>
+                            </div>
+                            <div class="leader">
+                                <div class="leader-avatar">MD</div>
+                                <div class="leader-info">
+                                    <div class="leader-name">Maria Davis</div>
+                                    <div class="leader-role">Deputy Secretary</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FBI -->
+                <div class="department-card">
+                    <div class="department-header">
+                        <img src="https://ik.imagekit.io/tycncf0zq0/download%20(3).png" alt="FBI Logo" class="department-logo">
+                        <h3 class="department-name">Federal Bureau of Investigation</h3>
+                        <div class="department-abbr">FBI</div>
+                    </div>
+                    <div class="department-content">
+                        <p class="department-description">
+                            The FBI is the principal federal law enforcement agency in the United States. Our agents investigate 
+                            serious federal crimes including terrorism, cybercrime, organized crime, public corruption, civil rights violations, 
+                            and major white-collar crimes. We work closely with local and state law enforcement agencies.
+                        </p>
+                        <div class="department-leadership">
+                            <h4>Department Leadership</h4>
+                            <div class="leader">
+                                <div class="leader-avatar">RJ</div>
+                                <div class="leader-info">
+                                    <div class="leader-name">Robert Johnson</div>
+                                    <div class="leader-role">Special Agent in Charge</div>
+                                </div>
+                            </div>
+                            <div class="leader">
+                                <div class="leader-avatar">SW</div>
+                                <div class="leader-info">
+                                    <div class="leader-name">Sarah Williams</div>
+                                    <div class="leader-role">Assistant Director</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- BEA -->
+                <div class="department-card">
+                    <div class="department-header">
+                        <img src="https://ik.imagekit.io/tycncf0zq0/download%20(2).png" alt="BEA Logo" class="department-logo">
+                        <h3 class="department-name">Bail Enforcement Agency</h3>
+                        <div class="department-abbr">BEA</div>
+                    </div>
+                    <div class="department-content">
+                        <p class="department-description">
+                            The Bail Enforcement Agency is responsible for tracking down and apprehending individuals who have 
+                            skipped bail or failed to appear in court. Our agents work to ensure that defendants comply with 
+                            court orders and return to face justice. We operate with precision and within legal boundaries.
+                        </p>
+                        <div class="department-leadership">
+                            <h4>Department Leadership</h4>
+                            <div class="leader">
+                                <div class="leader-avatar">MB</div>
+                                <div class="leader-info">
+                                    <div class="leader-name">Michael Brown</div>
+                                    <div class="leader-role">Chief Enforcement Officer</div>
+                                </div>
+                            </div>
+                            <div class="leader">
+                                <div class="leader-avatar">LT</div>
+                                <div class="leader-info">
+                                    <div class="leader-name">Lisa Taylor</div>
+                                    <div class="leader-role">Operations Manager</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- PR -->
+                <div class="department-card">
+                    <div class="department-header">
+                        <img src="https://ik.imagekit.io/tycncf0zq0/download%20(1).png" alt="PR Logo" class="department-logo">
+                        <h3 class="department-name">Park Rangers</h3>
+                        <div class="department-abbr">PR</div>
+                    </div>
+                    <div class="department-content">
+                        <p class="department-description">
+                            Park Rangers are responsible for protecting and managing Los Angeles' extensive park systems. 
+                            Our duties include law enforcement within park boundaries, conservation efforts, visitor assistance, 
+                            search and rescue operations, and educational programs about natural resources and wildlife.
+                        </p>
+                        <div class="department-leadership">
+                            <h4>Department Leadership</h4>
+                            <div class="leader">
+                                <div class="leader-avatar">DW</div>
+                                <div class="leader-info">
+                                    <div class="leader-name">David Wilson</div>
+                                    <div class="leader-role">Chief Park Ranger</div>
+                                </div>
+                            </div>
+                            <div class="leader">
+                                <div class="leader-avatar">AM</div>
+                                <div class="leader-info">
+                                    <div class="leader-name">Amanda Martinez</div>
+                                    <div class="leader-role">Deputy Chief Ranger</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- LAPD -->
+                <div class="department-card">
+                    <div class="department-header">
+                        <img src="https://ik.imagekit.io/tycncf0zq0/download%20(10).png" alt="LAPD Logo" class="department-logo">
+                        <h3 class="department-name">Los Angeles Police Department</h3>
+                        <div class="department-abbr">LAPD</div>
+                    </div>
+                    <div class="department-content">
+                        <p class="department-description">
+                            The LAPD is the primary law enforcement agency for the City of Los Angeles. With over 9,000 officers 
+                            and 3,000 civilian staff, we serve and protect approximately 4 million residents across 473 square miles. 
+                            Our mission is to safeguard lives and property, reduce crime, and enhance public safety through community partnerships.
+                        </p>
+                        <div class="department-leadership">
+                            <h4>Department Leadership</h4>
+                            <div class="leader">
+                                <div class="leader-avatar">MG</div>
+                                <div class="leader-info">
+                                    <div class="leader-name">Michelle Garcia</div>
+                                    <div class="leader-role">Chief of Police</div>
+                                </div>
+                            </div>
+                            <div class="leader">
+                                <div class="leader-avatar">RH</div>
+                                <div class="leader-info">
+                                    <div class="leader-name">Richard Hernandez</div>
+                                    <div class="leader-role">Assistant Chief</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- CHP -->
+                <div class="department-card">
+                    <div class="department-header">
+                        <img src="https://ik.imagekit.io/tycncf0zq0/download.png" alt="CHP Logo" class="department-logo">
+                        <h3 class="department-name">California Highway Patrol</h3>
+                        <div class="department-abbr">CHP</div>
+                    </div>
+                    <div class="department-content">
+                        <p class="department-description">
+                            The California Highway Patrol is responsible for ensuring the safety, service, and security 
+                            of California's roadways. Our officers patrol state highways, enforce traffic laws, investigate 
+                            accidents, and provide assistance to motorists. We work to reduce traffic fatalities and injuries 
+                            through education and enforcement.
+                        </p>
+                        <div class="department-leadership">
+                            <h4>Department Leadership</h4>
+                            <div class="leader">
+                                <div class="leader-avatar">SO</div>
+                                <div class="leader-info">
+                                    <div class="leader-name">Sean O'Malley</div>
+                                    <div class="leader-role">Commissioner</div>
+                                </div>
+                            </div>
+                            <div class="leader">
+                                <div class="leader-avatar">JC</div>
+                                <div class="leader-info">
+                                    <div class="leader-name">Jennifer Chen</div>
+                                    <div class="leader-role">Deputy Commissioner</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- LASO -->
+                <div class="department-card">
+                    <div class="department-header">
+                        <img src="https://ik.imagekit.io/tycncf0zq0/download%20(15).png" alt="LASO Logo" class="department-logo">
+                        <h3 class="department-name">Los Angeles Sheriff's Department</h3>
+                        <div class="department-abbr">LASO</div>
+                    </div>
+                    <div class="department-content">
+                        <p class="department-description">
+                            The Los Angeles Sheriff's Department provides law enforcement services to unincorporated areas 
+                            of Los Angeles County and contract cities. We operate the county jail system, provide court services, 
+                            and offer specialized units including SWAT, K-9, and air support. Our mission is to serve with integrity and professionalism.
+                        </p>
+                        <div class="department-leadership">
+                            <h4>Department Leadership</h4>
+                            <div class="leader">
+                                <div class="leader-avatar">AL</div>
+                                <div class="leader-info">
+                                    <div class="leader-name">Alexandra Lee</div>
+                                    <div class="leader-role">Sheriff</div>
+                                </div>
+                            </div>
+                            <div class="leader">
+                                <div class="leader-avatar">TR</div>
+                                <div class="leader-info">
+                                    <div class="leader-name">Thomas Rodriguez</div>
+                                    <div class="leader-role">Undersheriff</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- LAFD -->
+                <div class="department-card">
+                    <div class="department-header">
+                        <img src="https://ik.imagekit.io/tycncf0zq0/download%20(14).png" alt="LAFD Logo" class="department-logo">
+                        <h3 class="department-name">Los Angeles Fire Department</h3>
+                        <div class="department-abbr">LAFD</div>
+                    </div>
+                    <div class="department-content">
+                        <p class="department-description">
+                            The Los Angeles Fire Department provides fire suppression, emergency medical services, 
+                            technical rescue, hazardous materials response, and fire prevention services to the City of Los Angeles. 
+                            With over 3,500 uniformed personnel, we respond to over 500,000 emergencies annually, protecting life, property, and the environment.
+                        </p>
+                        <div class="department-leadership">
+                            <h4>Department Leadership</h4>
+                            <div class="leader">
+                                <div class="leader-avatar">RP</div>
+                                <div class="leader-info">
+                                    <div class="leader-name">Ralph Peterson</div>
+                                    <div class="leader-role">Fire Chief</div>
+                                </div>
+                            </div>
+                            <div class="leader">
+                                <div class="leader-avatar">EK</div>
+                                <div class="leader-info">
+                                    <div class="leader-name">Elena Kim</div>
+                                    <div class="leader-role">Deputy Chief</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Overseeing Department -->
+            <div class="overseeing-department">
+                <img src="https://ik.imagekit.io/tycncf0zq0/Los%20Angeles%20Dept%20Mnaagment.png" alt="Los Angeles Department Management Logo" class="overseeing-logo">
+                <h3>Los Angeles Department Management</h3>
+                <p>
+                    The Los Angeles Department Management serves as the central administrative body overseeing all law enforcement 
+                    and emergency service departments in our community. We coordinate interdepartmental operations, establish 
+                    standardized procedures, allocate resources, and ensure all departments work together effectively to maintain 
+                    public safety and order throughout Los Angeles.
+                </p>
+                <p>
+                    Our leadership team works closely with department heads to develop comprehensive strategies, implement best practices, 
+                    and address community concerns. We are committed to transparency, accountability, and continuous improvement in all our operations.
+                </p>
+                <a href="http://los-angeles-roleplay.online/We-Need-You" class="btn" style="margin-top: 20px;">Join Our Team</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <img src="https://ik.imagekit.io/seqcqjmzq/LARP%20-%20made%20by%20star%202.png?updatedAt=1759093844096" alt="Los Angeles Roleplay Logo" class="footer-logo">
+                <h3>Los Angeles Roleplay</h3>
+                <p>Building the most immersive Los Angeles-based roleplay experience on Roblox since 2025.</p>
+                <div class="social-links">
+                    <a href="https://discord.gg/SAhNSas7yn" target="_blank">
+                        <i class="fab fa-discord"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="http://los-angeles-roleplay.online" class="footer-btn">Home</a></li>
+                    <li><a href="http://los-angeles-roleplay.online/About" class="footer-btn">About Us</a></li>
+                    <li><a href="http://los-angeles-roleplay.online/Community" class="footer-btn">Community</a></li>
+                    <li><a href="http://los-angeles-roleplay.online/Staff" class="footer-btn">Staff</a></li>
+                    <li><a href="http://los-angeles-roleplay.online/Support" class="footer-btn">Support</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="http://los-angeles-roleplay.online/Rules" class="footer-btn">Rules & Guidelines</a></li>
+                    <li><a href="http://los-angeles-roleplay.online/FAQ" class="footer-btn">FAQ</a></li>
+                    <li><a href="http://los-angeles-roleplay.online/Support" class="footer-btn">Support</a></li>
+                    <li><a href="http://los-angeles-roleplay.online/Departments" class="footer-btn">Departments</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="http://los-angeles-roleplay.online/Privacy-Policy" class="footer-btn">Privacy Policy</a></li>
+                    <li><a href="http://los-angeles-roleplay.online/Terms" class="footer-btn">Terms of Service</a></li>
+                    <li><a href="http://los-angeles-roleplay.online/Contact" class="footer-btn">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Los Angeles Roleplay Community. All rights reserved.</p>
+            <p>This site is not affiliated with Roblox Corporation.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+            
+            // Close menu when clicking on a link
+            document.querySelectorAll('.nav-link, .nav-btn').forEach(n => n.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }));
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
